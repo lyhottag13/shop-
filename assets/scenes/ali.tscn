@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cpn0cyjdhnbk"]
+
+[ext_resource type="Script" uid="uid://bc0xogtpb4xk2" path="res://assets/scripts/ali.gd" id="1_qeue6"]
+[ext_resource type="Texture2D" uid="uid://bd4gn3g5odqj1" path="res://assets/sprites/ali/Ali Shopkeeper (Desk Lights Off).png" id="2_32vt2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58s6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_32vt2")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 0.0
+}]
+
+[node name="Ali" type="Node2D" unique_id=2021903527]
+script = ExtResource("1_qeue6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=812268796]
+position = Vector2(0, -66)
+sprite_frames = SubResource("SpriteFrames_58s6x")
+animation = &"closed"
