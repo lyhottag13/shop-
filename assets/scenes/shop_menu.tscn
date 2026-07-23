@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cvt017ccyv0gu"]
+
+[ext_resource type="Texture2D" uid="uid://c6ugll0vmupek" path="res://icon.svg" id="1_7thdy"]
+[ext_resource type="Script" uid="uid://i7ic8f4awqsg" path="res://assets/scenes/shop_menu.gd" id="1_fs5x5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs5x5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_380rk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_fs5x5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(727, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_380rk"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.1, 1),
+"update": 0,
+"values": [Vector2(480, 135), Vector2(726, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_jp2jb"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.1, 1),
+"update": 0,
+"values": [Vector2(726, 135), Vector2(480, 135)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55fie"]
+_data = {
+&"RESET": SubResource("Animation_fs5x5"),
+&"hide": SubResource("Animation_380rk"),
+&"show": SubResource("Animation_jp2jb")
+}
+
+[node name="ShopMenu" type="Control" unique_id=1188270345]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 247.0
+offset_right = 247.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_fs5x5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2028214090]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -103.0
+offset_bottom = 103.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0.5)
+theme_override_constants/separation = -3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1953619812]
+z_index = 1
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fs5x5")
+
+[node name="OpenShopButton" type="Button" parent="HBoxContainer/PanelContainer" unique_id=1458750859]
+unique_name_in_owner = true
+layout_mode = 2
+text = "O"
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1307532859]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_380rk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=2025790364]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1603196211]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=755509528]
+layout_mode = 2
+size_flags_vertical = 3
+text = "UP"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1605717230]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+texture = ExtResource("1_7thdy")
+
+[node name="Button2" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1177280641]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DOWN"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1111303181]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1738083785]
+layout_mode = 2
+text = "Title"
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1230956536]
+layout_mode = 2
+text = "Description"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317087454]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_55fie")
+
+[connection signal="pressed" from="HBoxContainer/PanelContainer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
