@@ -219,7 +219,7 @@ color = Color(0, 0, 0, 1)
 [node name="Ali" parent="." unique_id=2021903527 instance=ExtResource("3_cb5na")]
 position = Vector2(240, 164)
 
-[node name="AliShopButton" type="Button" parent="Ali" unique_id=1104932454]
+[node name="AliShopButton" type="Button" parent="Ali" unique_id=180530480]
 unique_name_in_owner = true
 offset_left = -58.0
 offset_top = -60.0
@@ -249,6 +249,8 @@ libraries/ = SubResource("AnimationLibrary_pw37s")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_i358u")
 
-[connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_ali_shop_button_pressed"]
+[node name="Buttons" type="Node" parent="." unique_id=77410258]
+
+[connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_interactable_pressed" flags=6 binds= ["remove_sign"]]
 [connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
 [connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]

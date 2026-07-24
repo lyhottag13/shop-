@@ -26,8 +26,9 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 
 
-func _on_ali_shop_button_pressed() -> void:
-	handle_cutscene(CUTSCENE_TYPE.SEQUENCE, "remove_sign")
+func _on_interactable_pressed(sequence_key: String) -> void:
+	handle_cutscene(CUTSCENE_TYPE.SEQUENCE, sequence_key)
+
 
 func handle_sequence(key: String):
 	match key:
