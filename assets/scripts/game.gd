@@ -39,6 +39,11 @@ func handle_sequence(key: String):
 				ali.play_animation("removing_sign")
 				is_open = true
 				await Utils.sleep(1)
+				appear_shop()
+		"emerge":
+			print("hey!")
+			await ali.play_animation("emerging")
+			ali.play_animation("idle")
 
 
 func _on_shop_menu_toggle_shop() -> void:
@@ -75,7 +80,7 @@ func disappear_shop() -> void:
 	can_use_shop = false
 
 
-func reappear_shop() -> void:
+func appear_shop() -> void:
 	shop_fade_animation_player.play_backwards("fade_shop")
 	await shop_fade_animation_player.animation_finished
 	shop_menu.enable()
@@ -91,7 +96,7 @@ func handle_shop_item(item_name: String):
 	is_showing_dialogue = true
 	disappear_shop()
 	await handle_dialogue(dialogue)
-	reappear_shop()
+	appear_shop()
 	dialogue_box.clear()
 	is_showing_dialogue = false
 
