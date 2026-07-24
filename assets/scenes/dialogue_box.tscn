@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cc68mc682hq8x"]
 
 [ext_resource type="FontFile" uid="uid://m8wplwpahs" path="res://assets/fonts/DTM-Mono.otf" id="1_n2ayl"]
-[ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://assets/scenes/dialogue_box.gd" id="1_wj3ed"]
+[ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://assets/scripts/dialogue_box.gd" id="1_wj3ed"]
+[ext_resource type="AudioStream" uid="uid://bfmamerromkdh" path="res://assets/sounds/generic1.mp3" id="3_00vgv"]
+[ext_resource type="AudioStream" uid="uid://ccpi3m1uvrff5" path="res://assets/sounds/generic2.mp3" id="4_amlr8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
 bg_color = Color(0, 0, 0, 1)
@@ -40,3 +42,11 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_n2ayl")
 text = "* Hey!"
+
+[node name="TextSoundMenu" type="AudioStreamPlayer" parent="." unique_id=155827660]
+unique_name_in_owner = true
+stream = ExtResource("3_00vgv")
+
+[node name="TextSoundDialogue" type="AudioStreamPlayer" parent="." unique_id=2005862019]
+unique_name_in_owner = true
+stream = ExtResource("4_amlr8")

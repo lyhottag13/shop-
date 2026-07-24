@@ -5,6 +5,206 @@
 [ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://assets/scenes/ali.tscn" id="3_cb5na"]
 [ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://assets/scenes/shop_menu.tscn" id="3_j62u1"]
 
+[sub_resource type="Animation" id="Animation_cb5na"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ali:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 164)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/ShopMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3w2km"]
+resource_name = "disappear_shop"
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"toggle_shop"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/ShopMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j62u1"]
+resource_name = "slide_ali"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ali:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(240, 164), Vector2(104, 164)]
+}
+
+[sub_resource type="Animation" id="Animation_5aext"]
+resource_name = "unslide_ali"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ali:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(104, 164), Vector2(240, 164)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3w2km"]
+_data = {
+&"RESET": SubResource("Animation_cb5na"),
+&"disappear_shop": SubResource("Animation_3w2km"),
+&"slide_ali": SubResource("Animation_j62u1"),
+&"unslide_ali": SubResource("Animation_5aext")
+}
+
+[sub_resource type="Animation" id="Animation_pw37s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ShopMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%ShopMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(726, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_wfsp4"]
+resource_name = "disappear_shop"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ShopMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw37s"]
+_data = {
+&"RESET": SubResource("Animation_pw37s"),
+&"fade_shop": SubResource("Animation_wfsp4")
+}
+
+[sub_resource type="Animation" id="Animation_k2t1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(726, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_phsto"]
+resource_name = "slide"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(726, 135), Vector2(480, 135)]
+}
+
+[sub_resource type="Animation" id="Animation_pkhv0"]
+resource_name = "slide_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ShopMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(480, 135), Vector2(726, 135)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i358u"]
+_data = {
+&"RESET": SubResource("Animation_k2t1h"),
+&"slide_in": SubResource("Animation_phsto"),
+&"slide_out": SubResource("Animation_pkhv0")
+}
+
 [node name="Game" type="Node" unique_id=602859619]
 script = ExtResource("1_cb66b")
 
@@ -32,5 +232,23 @@ flat = true
 unique_name_in_owner = true
 
 [node name="ShopMenu" parent="UI" unique_id=737163911 instance=ExtResource("3_j62u1")]
+unique_name_in_owner = true
+offset_left = 246.0
+offset_right = 246.0
+
+[node name="AliAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1169394056]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_3w2km")
+
+[node name="ShopFadeAnimationPlayer" type="AnimationPlayer" parent="." unique_id=52605891]
+unique_name_in_owner = true
+root_node = NodePath("../AliAnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_pw37s")
+
+[node name="ShopSlideAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1602047192]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_i358u")
 
 [connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_ali_shop_button_pressed"]
+[connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
+[connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]
