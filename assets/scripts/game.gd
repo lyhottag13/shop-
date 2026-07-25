@@ -140,7 +140,10 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 		CUTSCENE_TYPE.SEQUENCE:
 			await handle_sequence(key)
 	can_interact = true
+	
 	cursor_stopper.hide()
+	# Resets the cursor after the cursor_stopper has disappeared.
+	Input.parse_input_event(InputEventMouseMotion.new()) 
 
 func _on_ali_sign_left_hand() -> void:
 	sign_animation_player.play("throw_sign")
