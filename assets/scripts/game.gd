@@ -8,12 +8,11 @@ class_name Game extends Node
 @onready var shop_fade_animation_player: AnimationPlayer = %ShopFadeAnimationPlayer
 @onready var shop_slide_animation_player: AnimationPlayer = %ShopSlideAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
+@onready var music: AudioStreamPlayer = $Music
 
 var dialogue_resource = Dialogue.new()
 
-var is_showing_dialogue = false
 var is_open := false
-var can_use_shop := true
 var can_interact := true
 
 enum CUTSCENE_TYPE {
@@ -41,7 +40,7 @@ func handle_sequence(key: String):
 				await Utils.sleep(1)
 				appear_shop()
 		"emerge":
-			print("hey!")
+			music.play()
 			await ali.play_animation("emerging")
 			ali.play_animation("idle")
 
@@ -51,9 +50,7 @@ func _on_shop_menu_toggle_shop() -> void:
 		return
 	
 	can_interact = false
-	
 	await toggle_shop()
-	
 	can_interact = true
 
 var is_shop_menu_open
@@ -77,14 +74,12 @@ func disappear_shop() -> void:
 	shop_fade_animation_player.play("fade_shop")
 	toggle_shop(false)
 	shop_menu.disable()
-	can_use_shop = false
 
 
 func appear_shop() -> void:
 	shop_fade_animation_player.play_backwards("fade_shop")
 	await shop_fade_animation_player.animation_finished
 	shop_menu.enable()
-	can_use_shop = true
 
 
 func _on_shop_menu_item_clicked(item_name: String) -> void:
@@ -93,12 +88,10 @@ func _on_shop_menu_item_clicked(item_name: String) -> void:
 
 func handle_shop_item(item_name: String):
 	var dialogue: Array = dialogue_resource.dialogue[item_name]
-	is_showing_dialogue = true
 	disappear_shop()
 	await handle_dialogue(dialogue)
 	appear_shop()
 	dialogue_box.clear()
-	is_showing_dialogue = false
 
 
 func handle_dialogue(dialogue: Array):

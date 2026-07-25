@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cc68mc682hq8x" path="res://assets/scenes/dialogue_box.tscn" id="2_5gf0t"]
 [ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://assets/scenes/ali.tscn" id="3_cb5na"]
 [ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://assets/scenes/shop_menu.tscn" id="3_j62u1"]
+[ext_resource type="AudioStream" uid="uid://m3doq8rl38fn" path="res://assets/sounds/shop.mp3" id="5_j62u1"]
 
 [sub_resource type="Animation" id="Animation_cb5na"]
 length = 0.001
@@ -252,11 +253,15 @@ libraries/ = SubResource("AnimationLibrary_i358u")
 
 [node name="Buttons" type="Node" parent="." unique_id=77410258]
 
-[node name="Button" type="Button" parent="." unique_id=1273688603]
+[node name="Button" type="Button" parent="Buttons" unique_id=1273688603]
 offset_right = 150.0
 offset_bottom = 78.0
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=752594792]
+stream = ExtResource("5_j62u1")
+parameters/looping = true
 
 [connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_interactable_pressed" flags=6 binds= ["remove_sign"]]
 [connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
 [connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]
-[connection signal="pressed" from="Button" to="." method="_on_interactable_pressed" flags=6 binds= ["emerge"]]
+[connection signal="pressed" from="Buttons/Button" to="." method="_on_interactable_pressed" flags=6 binds= ["emerge"]]
