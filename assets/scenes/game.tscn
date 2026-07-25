@@ -371,6 +371,7 @@ unique_name_in_owner = true
 offset_left = -58.0
 offset_top = -60.0
 offset_right = 59.0
+mouse_default_cursor_shape = 2
 flat = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1080522432]
@@ -383,6 +384,17 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 offset_left = 246.0
 offset_right = 246.0
+
+[node name="CursorStopper" type="Control" parent="UI" unique_id=1331717742]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 4
 
 [node name="AliAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1169394056]
 unique_name_in_owner = true

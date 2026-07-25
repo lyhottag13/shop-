@@ -11,6 +11,13 @@ class_name Game extends Node
 @onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var music: AudioStreamPlayer = $Music
+@onready var cursor_stopper: Control = %CursorStopper
+
+#region CURSOR
+const cursor_normal = preload("uid://favkw5srtb07")
+const cursor_wait = preload("uid://cg7qrew34rpr")
+const cursor_highlight = preload("uid://h8vim3ghdnwp")
+#endregion
 
 var dialogue_resource = Dialogue.new()
 
@@ -20,6 +27,13 @@ enum CUTSCENE_TYPE {
 	ITEM,
 	SEQUENCE
 }
+
+
+func _ready() -> void:
+	Input.set_custom_mouse_cursor(cursor_normal)
+	Input.set_custom_mouse_cursor(cursor_wait, Input.CURSOR_WAIT)
+	Input.set_custom_mouse_cursor(cursor_highlight, Input.CURSOR_POINTING_HAND)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
@@ -117,6 +131,8 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 	if not can_interact:
 		return
 	
+	cursor_stopper.show()
+	
 	can_interact = false
 	match cutscene_type:
 		CUTSCENE_TYPE.ITEM:
@@ -124,7 +140,7 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 		CUTSCENE_TYPE.SEQUENCE:
 			await handle_sequence(key)
 	can_interact = true
-
+	cursor_stopper.hide()
 
 func _on_ali_sign_left_hand() -> void:
 	sign_animation_player.play("throw_sign")
