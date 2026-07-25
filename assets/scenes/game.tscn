@@ -251,11 +251,9 @@ libraries/ = SubResource("AnimationLibrary_pw37s")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_i358u")
 
-[node name="Buttons" type="Node" parent="." unique_id=77410258]
+[node name="GameAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1434221774]
 
-[node name="Button" type="Button" parent="Buttons" unique_id=1273688603]
-offset_right = 150.0
-offset_bottom = 78.0
+[node name="Buttons" type="Node" parent="." unique_id=77410258]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=752594792]
 stream = ExtResource("5_j62u1")
@@ -264,4 +262,3 @@ parameters/looping = true
 [connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_interactable_pressed" flags=6 binds= ["remove_sign"]]
 [connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
 [connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]
-[connection signal="pressed" from="Buttons/Button" to="." method="_on_interactable_pressed" flags=6 binds= ["emerge"]]

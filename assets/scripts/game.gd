@@ -12,7 +12,6 @@ class_name Game extends Node
 
 var dialogue_resource = Dialogue.new()
 
-var is_open := false
 var can_interact := true
 
 enum CUTSCENE_TYPE {
@@ -32,16 +31,15 @@ func _on_interactable_pressed(sequence_key: String) -> void:
 func handle_sequence(key: String):
 	match key:
 		"remove_sign":
-			if not is_open:
-				dialogue_box.show_text({text = "Gadzooks!"})
-				background.color = Color(1.0, 0.881, 0.0, 1.0)
-				ali.play_animation("removing_sign")
-				is_open = true
-				await Utils.sleep(1)
-				appear_shop()
+			dialogue_box.show_text({text = "Gadzooks!"})
+			background.color = Color(1.0, 0.881, 0.0, 1.0)
+			ali.play_animation("removing_sign")
+			await Utils.sleep(1)
+			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("emerge"), ConnectFlags.CONNECT_ONE_SHOT)
 		"emerge":
 			music.play()
 			await ali.play_animation("emerging")
+			appear_shop()
 			ali.play_animation("idle")
 
 
@@ -53,7 +51,9 @@ func _on_shop_menu_toggle_shop() -> void:
 	await toggle_shop()
 	can_interact = true
 
+
 var is_shop_menu_open
+
 
 # Used when the open shop button is clicked
 func toggle_shop(enabled = null) -> void:
@@ -68,7 +68,6 @@ func toggle_shop(enabled = null) -> void:
 	
 	await shop_slide_animation_player.animation_finished
 	
-
 
 func disappear_shop() -> void:
 	shop_fade_animation_player.play("fade_shop")
