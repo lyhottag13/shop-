@@ -2,11 +2,13 @@ class_name Game extends Node
 
 @onready var ali_shop_button: Button = %AliShopButton
 @onready var dialogue_box: DialogueBox = %DialogueBox
-@onready var background: ColorRect = $Background
+@onready var background: TextureRect = $Background
 @onready var ali: Ali = $Ali
 @onready var ali_animation_player: AnimationPlayer = %AliAnimationPlayer
 @onready var shop_fade_animation_player: AnimationPlayer = %ShopFadeAnimationPlayer
 @onready var shop_slide_animation_player: AnimationPlayer = %ShopSlideAnimationPlayer
+@onready var background_animation_player: AnimationPlayer = %BackgroundAnimationPlayer
+@onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var music: AudioStreamPlayer = $Music
 
@@ -32,7 +34,8 @@ func handle_sequence(key: String):
 	match key:
 		"remove_sign":
 			dialogue_box.show_text({text = "Gadzooks!"})
-			background.color = Color(1.0, 0.881, 0.0, 1.0)
+			background_animation_player.play("fade_to_yellow")
+			ali_animation_player.play("light_up")
 			ali.play_animation("removing_sign")
 			await Utils.sleep(1)
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("emerge"), ConnectFlags.CONNECT_ONE_SHOT)
@@ -41,6 +44,11 @@ func handle_sequence(key: String):
 			await ali.play_animation("emerging")
 			appear_shop()
 			ali.play_animation("idle")
+			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
+		"banter":
+			var random_index = randi_range(0, 2)
+			var dialogue = dialogue_resource.dialogue["banter" + str(random_index)]
+			await handle_dialogue(dialogue)
 
 
 func _on_shop_menu_toggle_shop() -> void:
@@ -52,11 +60,15 @@ func _on_shop_menu_toggle_shop() -> void:
 	can_interact = true
 
 
-var is_shop_menu_open
+var is_shop_menu_open = false
 
 
 # Used when the open shop button is clicked
 func toggle_shop(enabled = null) -> void:
+	# Useful when the disappear shop is used and the shop is currently closed
+	if enabled == is_shop_menu_open: 
+		return
+	
 	is_shop_menu_open = enabled if enabled != null else not is_shop_menu_open
 	
 	if is_shop_menu_open:
@@ -67,7 +79,7 @@ func toggle_shop(enabled = null) -> void:
 		ali_animation_player.play("unslide_ali")
 	
 	await shop_slide_animation_player.animation_finished
-	
+
 
 func disappear_shop() -> void:
 	shop_fade_animation_player.play("fade_shop")
@@ -87,17 +99,19 @@ func _on_shop_menu_item_clicked(item_name: String) -> void:
 
 func handle_shop_item(item_name: String):
 	var dialogue: Array = dialogue_resource.dialogue[item_name]
-	disappear_shop()
 	await handle_dialogue(dialogue)
-	appear_shop()
-	dialogue_box.clear()
 
 
 func handle_dialogue(dialogue: Array):
+	ali.play_animation("talking")
+	disappear_shop()
 	for dialogue_data: Dictionary in dialogue:
 		await dialogue_box.show_text(dialogue_data)
 		await Utils.sleep(2)
-
+	appear_shop()
+	ali.play_animation("idle")
+	dialogue_box.clear()
+	
 
 func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 	if not can_interact:
@@ -110,3 +124,7 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 		CUTSCENE_TYPE.SEQUENCE:
 			await handle_sequence(key)
 	can_interact = true
+
+
+func _on_ali_sign_left_hand() -> void:
+	sign_animation_player.play("throw_sign")
