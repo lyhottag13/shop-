@@ -54,6 +54,7 @@ func handle_sequence(key: String):
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("emerge"), ConnectFlags.CONNECT_ONE_SHOT)
 		"emerge":
 			music.play()
+			start_howdy_text()
 			await ali.play_animation("emerging")
 			appear_shop()
 			ali.play_animation("idle")
@@ -62,6 +63,11 @@ func handle_sequence(key: String):
 			var random_index = randi_range(0, 2)
 			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
 			await handle_dialogue(dialogue)
+
+
+func start_howdy_text() -> void:
+	await Utils.sleep(1)
+	dialogue_box.show_text({text = "Howdy!\nI'm Ali.", face = "happy"})
 
 
 func _on_shop_menu_toggle_shop() -> void:
