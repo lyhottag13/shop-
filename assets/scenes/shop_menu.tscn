@@ -103,6 +103,7 @@ clip_contents = true
 custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="DownButtonContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1179987400]
 layout_mode = 2
