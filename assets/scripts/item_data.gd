@@ -11,12 +11,8 @@ static var item_data : Dictionary[String, Dictionary]= {
 		dialogue = [
 			{
 				face = "happy",
-				text = "That's an interesting-looking item.",
+				text = "That's an interesting-looking item.\nWhy is it here?",
 			},
-			{
-				face = "happy",
-				text = "Why is it in my shop?",
-			}	
 		]
 	},
 	cave_explorer = {

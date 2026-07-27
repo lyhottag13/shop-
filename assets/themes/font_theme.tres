@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://ue26txsnqiv2"]
+
+[ext_resource type="FontFile" uid="uid://m8wplwpahs" path="res://assets/fonts/DialogueFont.otf" id="1_srqud"]
+
+[resource]
+default_font = ExtResource("1_srqud")

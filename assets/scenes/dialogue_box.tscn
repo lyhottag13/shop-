@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bfmamerromkdh" path="res://assets/sounds/generic1.mp3" id="3_00vgv"]
 [ext_resource type="Texture2D" uid="uid://d0et01ap3mu6w" path="res://assets/sprites/ali/Dialogue Ali (Speaking).png" id="3_u1vlu"]
 [ext_resource type="AudioStream" uid="uid://ccpi3m1uvrff5" path="res://assets/sounds/generic2.mp3" id="4_amlr8"]
-[ext_resource type="FontFile" uid="uid://m8wplwpahs" path="res://assets/fonts/DialogueFont.otf" id="4_u1vlu"]
+[ext_resource type="PackedScene" uid="uid://q7c7r2ubg0t0" path="res://assets/scenes/star_and_label_container.tscn" id="4_u1vlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
 bg_color = Color(0, 0, 0, 1)
@@ -93,22 +93,12 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2" unique_id=1917357890]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Star" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer" unique_id=1375511682]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_u1vlu")
-text = "*"
-
-[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer" unique_id=956437566]
+[node name="TextContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2" unique_id=1296283488]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-autowrap_mode = 2
+
+[node name="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2/TextContainer" unique_id=2090071753 instance=ExtResource("4_u1vlu")]
+layout_mode = 2
 
 [node name="TextSoundMenu" type="AudioStreamPlayer" parent="." unique_id=155827660]
 unique_name_in_owner = true

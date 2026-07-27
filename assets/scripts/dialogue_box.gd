@@ -2,20 +2,28 @@ class_name DialogueBox extends Control
 
 signal dialogue_finished
 
-@onready var label: Label = %Label
 @onready var text_sound_menu: AudioStreamPlayer = %TextSoundMenu
 @onready var text_sound_dialogue: AudioStreamPlayer = %TextSoundDialogue
 @onready var face_sprite: AnimatedSprite2D = %FaceSprite
 @onready var face_container: Control = %FaceContainer
+@onready var text_container: VBoxContainer = %TextContainer
 
+const STAR_AND_LABEL_CONTAINER = preload("uid://q7c7r2ubg0t0")
 const MENU_FONT: FontFile = preload("uid://ca24jgg6u6rnm")
 const DIALOGUE_FONT: FontFile = preload("uid://m8wplwpahs")
+var FONT_THEME = preload("uid://ue26txsnqiv2")
 
 var skip: bool = false
 
+var current_container: StarAndLabelContainer
+
 
 func show_text(text_properties: Dictionary):
-	label.text = ""
+	for child in text_container.get_children():
+		child.queue_free()
+	
+	current_container = STAR_AND_LABEL_CONTAINER.instantiate()
+	text_container.add_child(current_container)
 	var type = text_properties.get("type")
 	var text = text_properties.get("text")
 	var face = text_properties.get("face")
@@ -25,12 +33,8 @@ func show_text(text_properties: Dictionary):
 		show_face()
 		face_sprite.play("talking")
 	
-	
-	if label.has_theme_font_override("font"):
-		label.remove_theme_font_override("font")
-	
 	var font_to_use = MENU_FONT if type == "menu" else DIALOGUE_FONT
-	label.add_theme_font_override("font", font_to_use)
+	FONT_THEME.default_font = font_to_use
 	
 	for character in text:
 		match type:
@@ -39,12 +43,16 @@ func show_text(text_properties: Dictionary):
 			_:
 				text_sound_dialogue.play()
 		
-		label.text += character
+		if character != "\n":
+			current_container.label.text += character
 		
 		if not skip:
 			match character:
 				"!", ".", "?":
 					await Utils.sleep(0.5)
+				"\n":
+					current_container = STAR_AND_LABEL_CONTAINER.instantiate()
+					text_container.add_child(current_container)
 				_:
 					await Utils.sleep(0.03)
 	

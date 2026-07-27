@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://q7c7r2ubg0t0"]
+
+[ext_resource type="Script" uid="uid://b3bcylpux7dg1" path="res://assets/scripts/star_and_label_container.gd" id="1_84rwv"]
+[ext_resource type="Theme" uid="uid://ue26txsnqiv2" path="res://assets/themes/font_theme.tres" id="1_xlrnt"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=2090071753]
+theme = ExtResource("1_xlrnt")
+theme_override_constants/separation = 5
+script = ExtResource("1_84rwv")
+
+[node name="Star" type="Label" parent="." unique_id=946492811]
+layout_mode = 2
+size_flags_vertical = 0
+text = "*"
+
+[node name="Label" type="Label" parent="." unique_id=38085191]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
