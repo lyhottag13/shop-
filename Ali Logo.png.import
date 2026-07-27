@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df5210gsvvrsh"
-path="res://.godot/imported/index.icon.png-5665fad188e88d1e882500a4376bfe02.ctex"
+uid="uid://dm0rvipxe8r6m"
+path="res://.godot/imported/Ali Logo.png-e6dcf61c73f9fe3677d3e54b3f1f5f44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://index.icon.png"
-dest_files=["res://.godot/imported/index.icon.png-5665fad188e88d1e882500a4376bfe02.ctex"]
+source_file="res://Ali Logo.png"
+dest_files=["res://.godot/imported/Ali Logo.png-e6dcf61c73f9fe3677d3e54b3f1f5f44.ctex"]
 
 [params]
 

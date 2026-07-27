@@ -21,7 +21,7 @@ const ITEM_HEIGHT := 128
 var is_item_swapping := false
 var current_item_index := 0
 
-var shop_item_buttons: Array[Button]
+var shop_item_buttons: Array[TextureButton]
 
 
 enum ShopDirection {
@@ -31,9 +31,9 @@ enum ShopDirection {
 
 func _ready() -> void:
 	for item in ItemData.item_data.values():
-		var new_button = Button.new()
+		var new_button = TextureButton.new()
 		new_button.size = Vector2(132, 132)
-		new_button.text = item.title
+		new_button.texture_normal = item.image
 		new_button.pivot_offset_ratio = Vector2(0.5, 0.5)
 		new_button.position = Vector2(0, 0) if item.name == ItemData.item_data.values().front().name else Vector2(0, 132)
 		new_button.pressed.connect(_on_shop_item_clicked.bind(item.name))
@@ -77,7 +77,7 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	down_button.modulate = INVISIBLE_COLOR if is_going_to_bottom else VISIBLE_COLOR
 	down_button.disabled = is_going_to_bottom
 	
-	var current_item: Button = shop_item_buttons[current_item_index]
+	var current_item: TextureButton = shop_item_buttons[current_item_index]
 	var old_shop_item_position = Vector2(0, 132) if p_direction == ShopDirection.UP else Vector2(0, -132)
 	
 	var shop_item_tween := create_tween()
@@ -93,7 +93,7 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	else:
 		current_item_index += 1
 	
-	var new_shop_item: Button = shop_item_buttons[current_item_index]
+	var new_shop_item: TextureButton = shop_item_buttons[current_item_index]
 	
 	shop_item_tween.tween_property(new_shop_item, "modulate", Color(1.0, 1.0, 1.0, 1.0), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "scale", Vector2(1, 1), TWEEN_DURATION)

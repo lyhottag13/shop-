@@ -13,7 +13,7 @@ config_version=5
 config/name="shop!"
 run/main_scene="uid://d36g6yvqkag6g"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://djl7lts1rvvf7"
+config/icon="uid://dm0rvipxe8r6m"
 
 [autoload]
 

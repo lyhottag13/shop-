@@ -7,6 +7,7 @@ static var item_data : Dictionary[String, Dictionary]= {
 		name = "godot",
 		title = "Godot",
 		description = "There's something fishy about this item...",
+		image = preload("uid://dhfqppklr1lsn"),
 		dialogue = [
 			{
 				face = "happy",
@@ -24,6 +25,7 @@ static var item_data : Dictionary[String, Dictionary]= {
 		name = "cave_explorer",
 		title = "Cave Explorer",
 		description = "Wacky.",
+		image = preload("uid://b156i5dkjq21g"),
 		dialogue = [
 			{
 				face = "happy",
