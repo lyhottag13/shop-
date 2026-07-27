@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bfmamerromkdh" path="res://assets/sounds/generic1.mp3" id="3_00vgv"]
 [ext_resource type="Texture2D" uid="uid://d0et01ap3mu6w" path="res://assets/sprites/ali/Dialogue Ali (Speaking).png" id="3_u1vlu"]
 [ext_resource type="AudioStream" uid="uid://ccpi3m1uvrff5" path="res://assets/sounds/generic2.mp3" id="4_amlr8"]
+[ext_resource type="FontFile" uid="uid://m8wplwpahs" path="res://assets/fonts/DialogueFont.otf" id="4_u1vlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
 bg_color = Color(0, 0, 0, 1)
@@ -86,17 +87,27 @@ sprite_frames = SubResource("SpriteFrames_eyclt")
 animation = &"talking"
 frame_progress = 0.5424528
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1963872197]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1340587113]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 
-[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=956437566]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2" unique_id=1917357890]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Star" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer" unique_id=1375511682]
 layout_mode = 2
 size_flags_vertical = 1
-text = "* Hey!"
+theme_override_fonts/font = ExtResource("4_u1vlu")
+text = "*"
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer2/HBoxContainer" unique_id=956437566]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 autowrap_mode = 2
 
 [node name="TextSoundMenu" type="AudioStreamPlayer" parent="." unique_id=155827660]

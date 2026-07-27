@@ -13,8 +13,9 @@ const DIALOGUE_FONT: FontFile = preload("uid://m8wplwpahs")
 
 var skip: bool = false
 
+
 func show_text(text_properties: Dictionary):
-	label.text = "* "
+	label.text = ""
 	var type = text_properties.get("type")
 	var text = text_properties.get("text")
 	var face = text_properties.get("face")
