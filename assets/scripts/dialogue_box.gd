@@ -37,20 +37,21 @@ func show_text(text_properties: Dictionary):
 	FONT_THEME.default_font = font_to_use
 	
 	for character in text:
-		match type:
-			"menu":
-				text_sound_menu.play()
-			_:
-				text_sound_dialogue.play()
-		
 		if character != "\n":
 			current_container.label.text += character
+			match type:
+				"menu":
+					text_sound_menu.play()
+				_:
+					text_sound_dialogue.play()
+		
 		
 		if not skip:
 			match character:
 				"!", ".", "?":
-					await Utils.sleep(0.5)
+					await Utils.sleep(0.3)
 				"\n":
+					await Utils.sleep(0.3)
 					current_container = STAR_AND_LABEL_CONTAINER.instantiate()
 					text_container.add_child(current_container)
 				_:

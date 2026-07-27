@@ -3,8 +3,8 @@ class_name ShopMenu extends Control
 signal item_clicked(dialogue: Array[Dialogue])
 
 @onready var open_shop_button: Button = %OpenShopButton
-@onready var up_button: Button = %UpButton
-@onready var down_button: Button = %DownButton
+@onready var up_button: TextureButton = %UpButton
+@onready var down_button: TextureButton = %DownButton
 @onready var shop_item_container: Control = %ShopItemContainer
 @onready var title: Label = %Title
 @onready var description: Label = %Description

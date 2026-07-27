@@ -421,7 +421,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"emerging1",
-"speed": 18.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -480,7 +480,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"emerging2",
-"speed": 18.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -634,5 +634,5 @@ script = ExtResource("1_qeue6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=812268796]
 sprite_frames = SubResource("SpriteFrames_58s6x")
-animation = &"emerging2"
+animation = &"emerging1"
 offset = Vector2(0, -66)

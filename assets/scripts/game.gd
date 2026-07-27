@@ -51,8 +51,6 @@ func handle_sequence(key: String):
 			ali_animation_player.play("light_up")
 			ali.play_animation("removing_sign")
 			await Utils.sleep(1)
-			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("emerge"), ConnectFlags.CONNECT_ONE_SHOT)
-		"emerge":
 			music.play()
 			start_howdy_text()
 			await ali.play_animation("emerging")

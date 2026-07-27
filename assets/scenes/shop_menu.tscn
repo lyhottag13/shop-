@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i7ic8f4awqsg" path="res://assets/scripts/shop_menu.gd" id="1_fs5x5"]
 [ext_resource type="FontFile" uid="uid://ca24jgg6u6rnm" path="res://assets/fonts/MenuFont.otf" id="2_fs5x5"]
+[ext_resource type="Texture2D" uid="uid://b7uwdcmraetvr" path="res://assets/sprites/shop_menu/shop_arrows.png" id="3_380rk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs5x5"]
 bg_color = Color(0, 0, 0, 1)
@@ -88,12 +89,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="UpButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButtonContainer" unique_id=755509528]
+[node name="UpButton" type="TextureButton" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButtonContainer" unique_id=962169144]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-text = "UP"
+texture_normal = ExtResource("3_380rk")
+stretch_mode = 3
 
 [node name="ShopItemContainer" type="Control" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=402031152]
 unique_name_in_owner = true
@@ -106,11 +108,13 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DownButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButtonContainer" unique_id=1177280641]
+[node name="DownButton" type="TextureButton" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButtonContainer" unique_id=833770739]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "DOWN"
+texture_normal = ExtResource("3_380rk")
+stretch_mode = 3
+flip_v = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1111303181]
 layout_mode = 2
