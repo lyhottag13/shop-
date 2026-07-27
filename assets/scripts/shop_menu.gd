@@ -35,6 +35,9 @@ func _ready() -> void:
 		new_button.size = Vector2(132, 132)
 		new_button.texture_normal = item.image
 		new_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+		if item.name == ItemData.item_data.values().front().name:
+			title.text = item.title
+			description.text = item.description
 		new_button.position = Vector2(0, 0) if item.name == ItemData.item_data.values().front().name else Vector2(0, 132)
 		new_button.pressed.connect(_on_shop_item_clicked.bind(item.name))
 		shop_item_buttons.append(new_button)

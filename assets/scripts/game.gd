@@ -47,7 +47,6 @@ func _on_interactable_pressed(sequence_key: String) -> void:
 func handle_sequence(key: String):
 	match key:
 		"remove_sign":
-			dialogue_box.show_text({text = "Gadzooks!"})
 			background_animation_player.play("fade_to_yellow")
 			ali_animation_player.play("light_up")
 			ali.play_animation("removing_sign")
