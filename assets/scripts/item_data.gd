@@ -12,12 +12,10 @@ static var item_data : Dictionary[String, Dictionary]= {
 			{
 				face = "happy",
 				text = "That's an interesting-looking item.",
-				type = "dialogue",
 			},
 			{
 				face = "happy",
 				text = "Why is it in my shop?",
-				type = "dialogue"
 			}	
 		]
 	},
@@ -30,7 +28,6 @@ static var item_data : Dictionary[String, Dictionary]= {
 			{
 				face = "happy",
 				text = "Awesome!",
-				type = "dialogue"
 			}
 		]
 	}

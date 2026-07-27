@@ -29,20 +29,24 @@ func show_text(text_properties: Dictionary):
 	if label.has_theme_font_override("font"):
 		label.remove_theme_font_override("font")
 	
-	var font_to_use = DIALOGUE_FONT if type == "dialogue" else MENU_FONT
+	var font_to_use = MENU_FONT if type == "menu" else DIALOGUE_FONT
 	label.add_theme_font_override("font", font_to_use)
 	
 	for character in text:
 		match type:
-			"dialogue":
-				text_sound_dialogue.play()
-			_:
+			"menu":
 				text_sound_menu.play()
+			_:
+				text_sound_dialogue.play()
 		
 		label.text += character
 		
 		if not skip:
-			await Utils.sleep(0.03)
+			match character:
+				"!", ".", "?":
+					await Utils.sleep(0.5)
+				_:
+					await Utils.sleep(0.03)
 	
 	if face != null:
 		face_sprite.play("idling")

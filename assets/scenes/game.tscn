@@ -207,6 +207,14 @@ _data = {
 &"slide_out": SubResource("Animation_pkhv0")
 }
 
+[sub_resource type="Animation" id="Animation_fqk1v"]
+resource_name = "emerge"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jdip"]
+_data = {
+&"emerge": SubResource("Animation_fqk1v")
+}
+
 [sub_resource type="Animation" id="Animation_i358u"]
 length = 0.001
 tracks/0/type = "value"
@@ -411,6 +419,7 @@ libraries/ = SubResource("AnimationLibrary_i358u")
 
 [node name="GameAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1434221774]
 unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_5jdip")
 
 [node name="BackgroundAnimationPlayer" type="AnimationPlayer" parent="." unique_id=832402156]
 unique_name_in_owner = true
