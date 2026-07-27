@@ -20,27 +20,15 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(240, 164)]
+"values": [Vector2(240, 158)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/ShopMenu:modulate")
+tracks/1/path = NodePath("Ali:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ali:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -76,7 +64,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(240, 164), Vector2(104, 164)]
+"values": [Vector2(240, 158), Vector2(104, 158)]
 }
 
 [sub_resource type="Animation" id="Animation_5aext"]
@@ -91,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(104, 164), Vector2(240, 164)]
+"values": [Vector2(104, 158), Vector2(240, 158)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3w2km"]
@@ -372,7 +360,7 @@ texture = ExtResource("2_5aext")
 
 [node name="Ali" parent="." unique_id=2021903527 instance=ExtResource("3_cb5na")]
 modulate = Color(0.409375, 0.409375, 0.409375, 1)
-position = Vector2(240, 164)
+position = Vector2(240, 158)
 
 [node name="AliShopButton" type="Button" parent="Ali" unique_id=180530480]
 unique_name_in_owner = true

@@ -54,13 +54,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -107.0
+offset_top = -112.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_wj3ed")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=478529743]
@@ -96,6 +97,7 @@ theme_override_constants/margin_top = 5
 [node name="TextContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2" unique_id=1296283488]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2/TextContainer" unique_id=2090071753 instance=ExtResource("4_u1vlu")]
 layout_mode = 2
