@@ -12,6 +12,11 @@ signal item_clicked(item_name: String)
 signal toggle_shop()
 
 const SHOP_MENU_LENGTH := 243
+const TWEEN_DURATION := 0.5
+const INVISIBLE_COLOR := Color(1.0, 1.0, 1.0, 0.0)
+const VISIBLE_COLOR := Color(1.0, 1.0, 1.0, 1.0)
+const TRANSLUCENT_COLOR := Color(1.0, 1.0, 1.0, 0.6)
+const ITEM_HEIGHT := 128
 
 var is_item_swapping := false
 var current_item_index := 0
@@ -28,9 +33,9 @@ func _ready() -> void:
 	var grid_children = shop_item_container.get_children()
 	for item in grid_children:
 		if item is TextureButton:
-			if item != grid_children[0]:
-				item.modulate = Color(1.0, 1.0, 1.0, 0.6)
-				item.position.y = 128
+			if item != grid_children.front():
+				item.modulate = TRANSLUCENT_COLOR
+				item.position.y = ITEM_HEIGHT
 			shop_items.append(item)
 
 func _on_open_shop_button_pressed() -> void:
@@ -60,21 +65,15 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	if is_item_swapping:
 		return
 	
-	const TWEEN_DURATION = 0.5
-	
 	is_item_swapping = true
 	
-	if current_item_index == 1 && p_direction == ShopDirection.UP:
-		up_button.modulate = Color(0.0, 0.0, 0.0, 0.0)
-		up_button.disabled = true
-	elif current_item_index == shop_items.size() - 2 and p_direction == ShopDirection.DOWN:
-		down_button.modulate = Color(0.0, 0.0, 0.0, 0.0)
-		down_button.disabled = true
-	else:
-		up_button.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		down_button.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		up_button.disabled = false
-		down_button.disabled = false
+	var is_going_to_top := current_item_index == 1 and p_direction == ShopDirection.UP
+	var is_going_to_bottom := current_item_index == shop_items.size() - 2 and p_direction == ShopDirection.DOWN
+	
+	up_button.modulate = INVISIBLE_COLOR if is_going_to_top else VISIBLE_COLOR
+	up_button.disabled = is_going_to_top
+	down_button.modulate = INVISIBLE_COLOR if is_going_to_bottom else VISIBLE_COLOR
+	down_button.disabled = is_going_to_bottom
 	
 	var current_item = shop_items[current_item_index]
 	var old_shop_item_position = Vector2(0, 128) if p_direction == ShopDirection.UP else Vector2(0, -128)
@@ -94,7 +93,6 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	
 	var new_shop_item = shop_items[current_item_index]
 	
-	shop_item_tween.set_parallel()
 	shop_item_tween.tween_property(new_shop_item, "modulate", Color(1.0, 1.0, 1.0, 1.0), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "scale", Vector2(1, 1), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "position", Vector2(0, 0), TWEEN_DURATION)
