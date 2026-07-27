@@ -1,6 +1,6 @@
-class_name Dialogue extends Resource
+class_name Dialogue extends RefCounted
 
-const dialogue: Dictionary[String, Array] = {
+static var dialogue: Dictionary[String, Array] = {
 	godot = [
 		{face = "confused", text = "Huh?", type = "dialogue"},
 		{face = "confused", text = "What's that?", type = "dialogue"},

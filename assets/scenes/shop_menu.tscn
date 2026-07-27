@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cvt017ccyv0gu"]
 
-[ext_resource type="Texture2D" uid="uid://cere346tvng6x" path="res://icon.svg" id="1_7thdy"]
 [ext_resource type="Script" uid="uid://i7ic8f4awqsg" path="res://assets/scripts/shop_menu.gd" id="1_fs5x5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs5x5"]
@@ -57,6 +56,7 @@ text = "O"
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1307532859]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_380rk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=2025790364]
@@ -75,33 +75,11 @@ disabled = true
 text = "UP"
 
 [node name="ShopItemContainer" type="Control" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=402031152]
+unique_name_in_owner = true
 clip_contents = true
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 size_flags_horizontal = 4
-
-[node name="ShopItemButton" type="TextureButton" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/ShopItemContainer" unique_id=751817314]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("1_7thdy")
-stretch_mode = 3
-
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/ShopItemContainer" unique_id=1309356785]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("1_7thdy")
-
-[node name="TextureButton2" type="TextureButton" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/ShopItemContainer" unique_id=926610074]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("1_7thdy")
 
 [node name="DownButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1177280641]
 unique_name_in_owner = true
@@ -113,15 +91,18 @@ text = "DOWN"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1738083785]
+[node name="Title" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1738083785]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Title"
+autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1230956536]
+[node name="Description" type="Label" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" unique_id=1230956536]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Description"
+autowrap_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButton" to="." method="_on_up_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/ShopItemContainer/ShopItemButton" to="." method="_on_shop_item_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButton" to="." method="_on_down_button_pressed"]

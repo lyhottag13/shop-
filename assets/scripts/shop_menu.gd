@@ -1,13 +1,13 @@
 class_name ShopMenu extends Control
 
-signal change_item(direction: String) # Only "up" or "down"
-signal item_clicked(item_name: String)
+signal item_clicked(dialogue: Array[Dialogue])
 
 @onready var open_shop_button: Button = %OpenShopButton
-@onready var shop_item_button: TextureButton = %ShopItemButton
 @onready var up_button: Button = %UpButton
 @onready var down_button: Button = %DownButton
-@onready var shop_item_container: Control = $HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/ShopItemContainer
+@onready var shop_item_container: Control = %ShopItemContainer
+@onready var title: Label = %Title
+@onready var description: Label = %Description
 
 signal toggle_shop()
 
@@ -21,7 +21,7 @@ const ITEM_HEIGHT := 128
 var is_item_swapping := false
 var current_item_index := 0
 
-var shop_items: Array[TextureButton]
+var shop_item_buttons: Array[Button]
 
 
 enum ShopDirection {
@@ -30,13 +30,15 @@ enum ShopDirection {
 }
 
 func _ready() -> void:
-	var grid_children = shop_item_container.get_children()
-	for item in grid_children:
-		if item is TextureButton:
-			if item != grid_children.front():
-				item.modulate = TRANSLUCENT_COLOR
-				item.position.y = ITEM_HEIGHT
-			shop_items.append(item)
+	for item in ItemData.item_data.values():
+		var new_button = Button.new()
+		new_button.size = Vector2(132, 132)
+		new_button.text = item.title
+		new_button.pivot_offset_ratio = Vector2(0.5, 0.5)
+		new_button.position = Vector2(0, 0) if item.name == ItemData.item_data.values().front().name else Vector2(0, 132)
+		new_button.pressed.connect(_on_shop_item_clicked.bind(item.name))
+		shop_item_buttons.append(new_button)
+		shop_item_container.add_child(new_button)
 
 func _on_open_shop_button_pressed() -> void:
 	toggle_shop.emit()
@@ -50,8 +52,8 @@ func enable():
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 
-func _on_shop_item_button_pressed() -> void:
-	item_clicked.emit("godot")
+func _on_shop_item_clicked(item_name: String) -> void:
+	item_clicked.emit(item_name)
 
 
 func _on_up_button_pressed() -> void:
@@ -68,17 +70,17 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	is_item_swapping = true
 	
 	var is_going_to_top := current_item_index == 1 and p_direction == ShopDirection.UP
-	var is_going_to_bottom := current_item_index == shop_items.size() - 2 and p_direction == ShopDirection.DOWN
+	var is_going_to_bottom := current_item_index == ItemData.item_data.size() - 2 and p_direction == ShopDirection.DOWN
 	
 	up_button.modulate = INVISIBLE_COLOR if is_going_to_top else VISIBLE_COLOR
 	up_button.disabled = is_going_to_top
 	down_button.modulate = INVISIBLE_COLOR if is_going_to_bottom else VISIBLE_COLOR
 	down_button.disabled = is_going_to_bottom
 	
-	var current_item = shop_items[current_item_index]
-	var old_shop_item_position = Vector2(0, 128) if p_direction == ShopDirection.UP else Vector2(0, -128)
+	var current_item: Button = shop_item_buttons[current_item_index]
+	var old_shop_item_position = Vector2(0, 132) if p_direction == ShopDirection.UP else Vector2(0, -132)
 	
-	var shop_item_tween = create_tween()
+	var shop_item_tween := create_tween()
 	shop_item_tween.set_ease(Tween.EASE_OUT)
 	shop_item_tween.set_trans(Tween.TRANS_EXPO)
 	shop_item_tween.set_parallel()
@@ -91,12 +93,23 @@ func handle_item_swap(p_direction: ShopDirection) -> void:
 	else:
 		current_item_index += 1
 	
-	var new_shop_item = shop_items[current_item_index]
+	var new_shop_item: Button = shop_item_buttons[current_item_index]
 	
 	shop_item_tween.tween_property(new_shop_item, "modulate", Color(1.0, 1.0, 1.0, 1.0), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "scale", Vector2(1, 1), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "position", Vector2(0, 0), TWEEN_DURATION)
 	
+	var item_title = ItemData.item_data.values()[current_item_index].title
+	var item_description = ItemData.item_data.values()[current_item_index].description
+	
+	set_title_and_description(item_title, item_description)
+	
 	await shop_item_tween.finished
 	
 	is_item_swapping = false
+
+
+func set_title_and_description(p_title: String, p_description: String):
+	title.text = p_title
+	description.text = p_description
+	

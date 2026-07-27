@@ -19,8 +19,6 @@ const cursor_wait = preload("uid://cg7qrew34rpr")
 const cursor_highlight = preload("uid://h8vim3ghdnwp")
 #endregion
 
-var dialogue_resource = Dialogue.new()
-
 var can_interact := true
 
 enum CUTSCENE_TYPE {
@@ -63,7 +61,7 @@ func handle_sequence(key: String):
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
 		"banter":
 			var random_index = randi_range(0, 2)
-			var dialogue = dialogue_resource.dialogue["banter" + str(random_index)]
+			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
 			await handle_dialogue(dialogue)
 
 
@@ -114,7 +112,7 @@ func _on_shop_menu_item_clicked(item_name: String) -> void:
 
 
 func handle_shop_item(item_name: String):
-	var dialogue: Array = dialogue_resource.dialogue[item_name]
+	var dialogue: Array = ItemData.item_data[item_name].dialogue
 	await handle_dialogue(dialogue)
 
 
