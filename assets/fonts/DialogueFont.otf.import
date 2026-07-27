@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ca24jgg6u6rnm"
-path="res://.godot/imported/DTM-Sans.otf-9c1ffe1bf8ff5c77df34434337398df3.fontdata"
+uid="uid://m8wplwpahs"
+path="res://.godot/imported/DialogueFont.otf-5ad6568d41bfdea109c9e8b7574c5516.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/DTM-Sans.otf"
-dest_files=["res://.godot/imported/DTM-Sans.otf-9c1ffe1bf8ff5c77df34434337398df3.fontdata"]
+source_file="res://assets/fonts/DialogueFont.otf"
+dest_files=["res://.godot/imported/DialogueFont.otf-5ad6568d41bfdea109c9e8b7574c5516.fontdata"]
 
 [params]
 

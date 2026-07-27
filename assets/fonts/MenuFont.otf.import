@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://m8wplwpahs"
-path="res://.godot/imported/DTM-Mono.otf-c538eec10a8578ad532f4ddde3f501c2.fontdata"
+uid="uid://ca24jgg6u6rnm"
+path="res://.godot/imported/MenuFont.otf-658622c95ffc51c2b460aefa574ec64e.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/DTM-Mono.otf"
-dest_files=["res://.godot/imported/DTM-Mono.otf-c538eec10a8578ad532f4ddde3f501c2.fontdata"]
+source_file="res://assets/fonts/MenuFont.otf"
+dest_files=["res://.godot/imported/MenuFont.otf-658622c95ffc51c2b460aefa574ec64e.fontdata"]
 
 [params]
 

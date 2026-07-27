@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cc68mc682hq8x"]
 
-[ext_resource type="FontFile" uid="uid://m8wplwpahs" path="res://assets/fonts/DTM-Mono.otf" id="1_n2ayl"]
 [ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://assets/scripts/dialogue_box.gd" id="1_wj3ed"]
+[ext_resource type="Texture2D" uid="uid://bhv2eau8p20ww" path="res://assets/sprites/ali/Dialogue Ali.png" id="2_amlr8"]
 [ext_resource type="AudioStream" uid="uid://bfmamerromkdh" path="res://assets/sounds/generic1.mp3" id="3_00vgv"]
+[ext_resource type="Texture2D" uid="uid://d0et01ap3mu6w" path="res://assets/sprites/ali/Dialogue Ali (Speaking).png" id="3_u1vlu"]
 [ext_resource type="AudioStream" uid="uid://ccpi3m1uvrff5" path="res://assets/sounds/generic2.mp3" id="4_amlr8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
@@ -12,6 +13,40 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mop83"]
+atlas = ExtResource("2_amlr8")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfoni"]
+atlas = ExtResource("3_u1vlu")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d0hy"]
+atlas = ExtResource("3_u1vlu")
+region = Rect2(132, 0, 132, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyclt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mop83")
+}],
+"loop": true,
+"name": &"idling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfoni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d0hy")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 10.0
+}]
 
 [node name="DialogueBox" type="MarginContainer" unique_id=973680422]
 anchors_preset = 12
@@ -31,17 +66,38 @@ script = ExtResource("1_wj3ed")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ilnc5")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1963872197]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1517076213]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="FaceContainer" type="Control" parent="PanelContainer/HBoxContainer" unique_id=1479988311]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FaceSprite" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/FaceContainer" unique_id=829828042]
+unique_name_in_owner = true
+position = Vector2(54, -7)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_eyclt")
+animation = &"talking"
+frame_progress = 0.5424528
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1963872197]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=956437566]
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=956437566]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("1_n2ayl")
 text = "* Hey!"
+autowrap_mode = 2
 
 [node name="TextSoundMenu" type="AudioStreamPlayer" parent="." unique_id=155827660]
 unique_name_in_owner = true
