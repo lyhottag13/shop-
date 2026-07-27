@@ -24,21 +24,18 @@ var current_item_index := 0
 var shop_item_buttons: Array[TextureButton]
 
 
-enum ShopDirection {
-	UP,
-	DOWN,
-}
-
 func _ready() -> void:
 	for item in ItemData.item_data.values():
 		var new_button = TextureButton.new()
 		new_button.size = Vector2(132, 132)
 		new_button.texture_normal = item.image
 		new_button.pivot_offset_ratio = Vector2(0.5, 0.5)
-		if item.name == ItemData.item_data.values().front().name:
+		
+		var is_front_item = item == ItemData.item_data.values().front()
+		if is_front_item:
 			title.text = item.title
 			description.text = item.description
-		new_button.position = Vector2(0, 0) if item.name == ItemData.item_data.values().front().name else Vector2(0, 132)
+		new_button.position = Vector2(0, 0) if is_front_item else Vector2(0, 132)
 		new_button.pressed.connect(_on_shop_item_clicked.bind(item.name))
 		shop_item_buttons.append(new_button)
 		shop_item_container.add_child(new_button)
@@ -60,52 +57,48 @@ func _on_shop_item_clicked(item_name: String) -> void:
 
 
 func _on_up_button_pressed() -> void:
-	handle_item_swap(ShopDirection.UP)
+	var new_item_index = current_item_index - 1
+	handle_item_swap(current_item_index, new_item_index)
 
 
 func _on_down_button_pressed() -> void:
-	handle_item_swap(ShopDirection.DOWN)
+	var new_item_index = current_item_index + 1
+	handle_item_swap(current_item_index, new_item_index)
 
-func handle_item_swap(p_direction: ShopDirection) -> void:
+func handle_item_swap(old_item_index: int, new_item_index: int) -> void:
 	if is_item_swapping:
 		return
 	
 	is_item_swapping = true
 	
-	var is_going_to_top := current_item_index == 1 and p_direction == ShopDirection.UP
-	var is_going_to_bottom := current_item_index == ItemData.item_data.size() - 2 and p_direction == ShopDirection.DOWN
+	var is_going_to_top := new_item_index == 0
+	var is_going_to_bottom := new_item_index == ItemData.item_data.size() - 1
 	
-	up_button.modulate = INVISIBLE_COLOR if is_going_to_top else VISIBLE_COLOR
-	up_button.disabled = is_going_to_top
-	down_button.modulate = INVISIBLE_COLOR if is_going_to_bottom else VISIBLE_COLOR
-	down_button.disabled = is_going_to_bottom
+	up_button.visible = not is_going_to_top
+	down_button.visible = not is_going_to_bottom
 	
-	var current_item: TextureButton = shop_item_buttons[current_item_index]
-	var old_shop_item_position = Vector2(0, 132) if p_direction == ShopDirection.UP else Vector2(0, -132)
+	var old_shop_item: TextureButton = shop_item_buttons[old_item_index]
+	var new_shop_item: TextureButton = shop_item_buttons[new_item_index]
+	var old_shop_item_position := Vector2(0, (132 if new_item_index < old_item_index else -132))
 	
 	var shop_item_tween := create_tween()
 	shop_item_tween.set_ease(Tween.EASE_OUT)
 	shop_item_tween.set_trans(Tween.TRANS_EXPO)
 	shop_item_tween.set_parallel()
-	shop_item_tween.tween_property(current_item, "modulate", Color(1.0, 1.0, 1.0, 0.6), TWEEN_DURATION)
-	shop_item_tween.tween_property(current_item, "scale", Vector2(0.6, 0.6), TWEEN_DURATION)
-	shop_item_tween.tween_property(current_item, "position", old_shop_item_position, TWEEN_DURATION)
 	
-	if p_direction == ShopDirection.UP:
-		current_item_index -= 1
-	else:
-		current_item_index += 1
-	
-	var new_shop_item: TextureButton = shop_item_buttons[current_item_index]
+	shop_item_tween.tween_property(old_shop_item, "modulate", Color(1.0, 1.0, 1.0, 0.6), TWEEN_DURATION)
+	shop_item_tween.tween_property(old_shop_item, "scale", Vector2(0.6, 0.6), TWEEN_DURATION)
+	shop_item_tween.tween_property(old_shop_item, "position", old_shop_item_position, TWEEN_DURATION)
 	
 	shop_item_tween.tween_property(new_shop_item, "modulate", Color(1.0, 1.0, 1.0, 1.0), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "scale", Vector2(1, 1), TWEEN_DURATION)
 	shop_item_tween.tween_property(new_shop_item, "position", Vector2(0, 0), TWEEN_DURATION)
 	
-	var item_title = ItemData.item_data.values()[current_item_index].title
-	var item_description = ItemData.item_data.values()[current_item_index].description
-	
+	var item_title: String = ItemData.item_data.values()[new_item_index].title
+	var item_description: String = ItemData.item_data.values()[new_item_index].description
 	set_title_and_description(item_title, item_description)
+	
+	current_item_index = new_item_index
 	
 	await shop_item_tween.finished
 	

@@ -50,10 +50,27 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fs5x5")
 
-[node name="OpenShopButton" type="Button" parent="HBoxContainer/PanelContainer" unique_id=1458750859]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer" unique_id=2119543675]
 layout_mode = 2
-text = "O"
+
+[node name="OpenShopButton" type="Button" parent="HBoxContainer/PanelContainer/Control" unique_id=1458750859]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.109184
+offset_right = 67.00001
+offset_bottom = 27.109184
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.96875, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_fs5x5")
+theme_override_font_sizes/font_size = 14
+text = "Open Shop"
+flat = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1307532859]
 layout_mode = 2
@@ -67,12 +84,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 
-[node name="UpButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=755509528]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
+[node name="UpButtonContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=287482075]
 layout_mode = 2
 size_flags_vertical = 3
-disabled = true
+
+[node name="UpButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButtonContainer" unique_id=755509528]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
 text = "UP"
 
 [node name="ShopItemContainer" type="Control" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=402031152]
@@ -82,7 +102,11 @@ custom_minimum_size = Vector2(132, 132)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="DownButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1177280641]
+[node name="DownButtonContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" unique_id=1179987400]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DownButton" type="Button" parent="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButtonContainer" unique_id=1177280641]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -108,6 +132,6 @@ theme_override_font_sizes/font_size = 12
 text = "Description"
 autowrap_mode = 2
 
-[connection signal="pressed" from="HBoxContainer/PanelContainer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButton" to="." method="_on_up_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButton" to="." method="_on_down_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/Control/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/UpButtonContainer/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer/DownButtonContainer/DownButton" to="." method="_on_down_button_pressed"]
