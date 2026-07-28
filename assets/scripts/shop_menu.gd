@@ -28,7 +28,7 @@ func _ready() -> void:
 	for item in ItemData.item_data.values():
 		var new_button = TextureButton.new()
 		new_button.size = Vector2(132, 132)
-		new_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		new_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
 		new_button.texture_normal = item.image
 		new_button.pivot_offset_ratio = Vector2(0.5, 0.5)
 		var is_front_item = item == ItemData.item_data.values().front()
