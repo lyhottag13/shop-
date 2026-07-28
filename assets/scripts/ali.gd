@@ -4,9 +4,6 @@ class_name Ali extends Node2D
 
 signal sign_left_hand
 
-func _ready() -> void:
-	animated_sprite_2d.play("closed")
-
 func play_animation(animation_name: String):
 	match animation_name:
 		"emerging":

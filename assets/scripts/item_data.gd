@@ -183,13 +183,13 @@ static var item_data : Dictionary[String, Dictionary] = {
 		]
 	},
 
-	deltarune = {
-		name = "deltarune",
+	thorn_ring = {
+		name = "thorn_ring",
 		title = "Thorn Ring",
 		description = "",
 		image = THORN_RING,
 		dialogue = [
-			{ face = "happy", text = "~" }
+			{ face = "happy", text = "" }
 		]
 	}
 }

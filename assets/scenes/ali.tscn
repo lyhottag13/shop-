@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b31wqqblelvk2" path="res://assets/sprites/ali/Ali Shopkeeper (Emerging).png" id="3_ohukh"]
 [ext_resource type="Texture2D" uid="uid://b4psl77xhot5m" path="res://assets/sprites/ali/Ali Shopkeeper (Idle) 132x132.png" id="4_t8lpf"]
 [ext_resource type="Texture2D" uid="uid://bxcd3bja4w8qu" path="res://assets/sprites/ali/Ali Shopkeeper (Talking).png" id="6_geru5"]
+[ext_resource type="Texture2D" uid="uid://d0isnrquvx7at" path="res://assets/sprites/ali/thorn_ring.webp" id="7_a658e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7o8l"]
 atlas = ExtResource("3_ohukh")
@@ -323,20 +324,24 @@ region = Rect2(2508, 0, 132, 132)
 atlas = ExtResource("3_58s6x")
 region = Rect2(2640, 0, 132, 132)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jv7s7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc8tp"]
 atlas = ExtResource("6_geru5")
 region = Rect2(0, 0, 132, 132)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4w2tn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rvso"]
 atlas = ExtResource("6_geru5")
 region = Rect2(132, 0, 132, 132)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbj6d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv7s7"]
 atlas = ExtResource("6_geru5")
-region = Rect2(264, 0, 132, 132)
+region = Rect2(0, 132, 132, 132)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j57ej"]
 atlas = ExtResource("4_t8lpf")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84ve7"]
+atlas = ExtResource("7_a658e")
 region = Rect2(0, 0, 132, 132)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58s6x"]
@@ -608,13 +613,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rc8tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rvso")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jv7s7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4w2tn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbj6d")
 }],
 "loop": true,
 "name": &"talking",
@@ -627,6 +632,14 @@ animations = [{
 "loop": true,
 "name": &"talking_idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84ve7")
+}],
+"loop": true,
+"name": &"thorn_ring",
+"speed": 5.0
 }]
 
 [node name="Ali" type="Node2D" unique_id=2021903527]
@@ -634,5 +647,7 @@ script = ExtResource("1_qeue6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=812268796]
 sprite_frames = SubResource("SpriteFrames_58s6x")
-animation = &"emerging1"
+animation = &"talking"
+autoplay = "closed"
+frame_progress = 0.6313314
 offset = Vector2(0, -66)

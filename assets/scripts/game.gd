@@ -61,11 +61,22 @@ func handle_sequence(key: String):
 			var random_index = randi_range(0, 2)
 			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
 			await handle_dialogue(dialogue)
+		"thorn_ring":
+			disappear_shop()
+			dialogue_box.clear()
+			background.modulate = Color(1.0, 0.559, 0.559, 1.0)
+			ali.play_animation("thorn_ring")
+			music.volume_linear = 0
+			await Utils.sleep(3)
+			background.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			ali.play_animation("idle")
+			music.volume_linear = 1
+			appear_shop()
 
 
 func start_howdy_text() -> void:
 	await Utils.sleep(1)
-	dialogue_box.show_text({text = "Howdy!\nI'm Ali.", face = "happy"})
+	await dialogue_box.show_text({text = "Howdy!\nI'm Ali.", face = "happy"})
 
 
 func _on_shop_menu_toggle_shop() -> void:
@@ -134,6 +145,9 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 	if not can_interact:
 		return
 	
+	if key == "thorn_ring":
+		cutscene_type = CUTSCENE_TYPE.SEQUENCE
+	
 	cursor_stopper.show()
 	
 	can_interact = false
@@ -147,6 +161,7 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 	cursor_stopper.hide()
 	# Resets the cursor after the cursor_stopper has disappeared.
 	Input.parse_input_event(InputEventMouseMotion.new()) 
+
 
 func _on_ali_sign_left_hand() -> void:
 	sign_animation_player.play("throw_sign")
