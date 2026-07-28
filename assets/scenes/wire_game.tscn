@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c5sgalvej038p"]
+
+[ext_resource type="Script" uid="uid://b48okv1q3nx7s" path="res://assets/scripts/wire_game.gd" id="1_5uhwf"]
+
+[node name="WireGame" type="Node2D" unique_id=2032007358]
+script = ExtResource("1_5uhwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589185646]
+
+[node name="Button" type="Button" parent="." unique_id=2115902797]
+offset_right = 37.0
+offset_bottom = 36.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

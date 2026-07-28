@@ -77,7 +77,7 @@ static var item_data : Dictionary[String, Dictionary] = {
 		name = "roblox",
 		title = "Basic Egg",
 		description = "",
-		image = preload("uid://bdo3ijxp287pt"),
+		image = ROBLOX,
 		dialogue = [
 			{ face = "happy", text = "Bee sure to feed it lotsa treats when it hatches!" }
 		]
