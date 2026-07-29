@@ -1,15 +1,171 @@
 [gd_scene format=3 uid="uid://c5sgalvej038p"]
 
 [ext_resource type="Script" uid="uid://b48okv1q3nx7s" path="res://assets/scripts/wire_game.gd" id="1_5uhwf"]
+[ext_resource type="Texture2D" uid="uid://c8epqq1s8h4cg" path="res://assets/sprites/arcade/wire_tiles.png" id="2_7gi43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o12v"]
+atlas = ExtResource("2_7gi43")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rniq"]
+atlas = ExtResource("2_7gi43")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gi43"]
+atlas = ExtResource("2_7gi43")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpqef"]
+atlas = ExtResource("2_7gi43")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0upi"]
+atlas = ExtResource("2_7gi43")
+region = Rect2(160, 0, 40, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybvym"]
+atlas = ExtResource("2_7gi43")
 
 [node name="WireGame" type="Node2D" unique_id=2032007358]
 script = ExtResource("1_5uhwf")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589185646]
+[node name="Control" type="Control" parent="." unique_id=1079444044]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=2115902797]
-offset_right = 37.0
-offset_bottom = 36.0
+[node name="Button" type="TextureButton" parent="Control" unique_id=1432362114]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_5o12v")
+stretch_mode = 3
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="Button2" type="TextureButton" parent="Control" unique_id=1800399332]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 244.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_7rniq")
+stretch_mode = 3
+
+[node name="Button3" type="TextureButton" parent="Control" unique_id=1658613805]
+layout_mode = 0
+offset_left = 260.0
+offset_right = 384.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_7gi43")
+stretch_mode = 3
+
+[node name="Button4" type="TextureButton" parent="Control" unique_id=580844498]
+layout_mode = 0
+offset_top = 43.0
+offset_right = 124.0
+offset_bottom = 83.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_gpqef")
+stretch_mode = 3
+
+[node name="Button5" type="TextureButton" parent="Control" unique_id=1143274313]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 45.0
+offset_right = 252.0
+offset_bottom = 85.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_f0upi")
+stretch_mode = 3
+
+[node name="Button6" type="TextureButton" parent="Control" unique_id=1366346819]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 45.0
+offset_right = 736.0
+offset_bottom = 85.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("AtlasTexture_ybvym")
+stretch_mode = 3
+
+[node name="Button7" type="TextureButton" parent="Control" unique_id=342696356]
+layout_mode = 0
+offset_top = 85.0
+offset_right = 124.0
+offset_bottom = 122.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="Button8" type="TextureButton" parent="Control" unique_id=55370238]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 88.0
+offset_right = 252.0
+offset_bottom = 125.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="Button9" type="TextureButton" parent="Control" unique_id=1436066458]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 97.0
+offset_right = 380.0
+offset_bottom = 134.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="Button10" type="TextureButton" parent="Control" unique_id=1009916287]
+layout_mode = 0
+offset_top = 146.0
+offset_right = 124.0
+offset_bottom = 183.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="Button11" type="TextureButton" parent="Control" unique_id=215095529]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 143.0
+offset_right = 252.0
+offset_bottom = 180.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="Button12" type="TextureButton" parent="Control" unique_id=1132072823]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 139.0
+offset_right = 380.0
+offset_bottom = 176.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_mode = 3

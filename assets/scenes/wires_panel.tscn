@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://u2lte5ws17hj"]
 
+[ext_resource type="Script" uid="uid://bp1mqp3pb84lr" path="res://assets/scripts/wires_panel.gd" id="1_6jwgl"]
+[ext_resource type="PackedScene" uid="uid://c5sgalvej038p" path="res://assets/scenes/wire_game.tscn" id="1_vyxlh"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfowd"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 3
@@ -14,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6jwgl")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=664070064]
 layout_mode = 1
@@ -31,6 +35,6 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qfowd")
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer" unique_id=283094241]
-layout_mode = 2
-text = "WIRES GO HERE!"
+[node name="WireGame" parent="MarginContainer/PanelContainer" unique_id=2032007358 instance=ExtResource("1_vyxlh")]
+
+[connection signal="wires_finished" from="MarginContainer/PanelContainer/WireGame" to="." method="_on_wire_game_wires_finished"]
