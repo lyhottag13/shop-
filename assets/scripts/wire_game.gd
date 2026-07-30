@@ -41,7 +41,7 @@ func _on_button_pressed(source: TextureButton, index: int) -> void:
 			current_combo[index] = (current_combo[index] + 1) % 2
 		_:
 			current_combo[index] = (current_combo[index] + 1) % POSSIBLE_ROTATIONS
-	print(current_combo)
+		
 	if current_combo.all(func(num: int) -> bool: return num == 0):
 		wires_finished.emit()
 		queue_free()

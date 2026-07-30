@@ -10,7 +10,10 @@ var link: String
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			OS.shell_open(link)
+			if OS.has_feature("web"):
+				JavaScriptBridge.eval('window.location.href = "' + link + '"')
+			else:
+				OS.shell_open(link)
 
 
 func set_image(texture: CompressedTexture2D):

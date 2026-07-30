@@ -18,7 +18,8 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(cursor_normal)
 	Input.set_custom_mouse_cursor(cursor_wait, Input.CURSOR_WAIT)
 	Input.set_custom_mouse_cursor(cursor_highlight, Input.CURSOR_POINTING_HAND)
-	current_scene = world.get_child(0)
+	
+	goto_scene(ARCADE_MACHINE)
 
 
 func _input(event: InputEvent) -> void:
@@ -29,7 +30,8 @@ func _input(event: InputEvent) -> void:
 
 
 func goto_scene(new_scene: PackedScene):
-	current_scene.queue_free()
+	if current_scene:
+		current_scene.queue_free()
 	var s = new_scene.instantiate()
 	world.add_child(s)
 	current_scene = s
@@ -39,7 +41,6 @@ func _on_game_goto_arcade() -> void:
 	goto_scene(ARCADE)
 	var arcade_scene = current_scene as Arcade
 	arcade_scene.goto_arcade_machine.connect(_on_arcade_goto_arcade_machine)
-
 
 func _on_arcade_goto_arcade_machine() -> void:
 	goto_scene(ARCADE_MACHINE)
