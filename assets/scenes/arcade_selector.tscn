@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://k8yiw0a6320p"]
+
+[ext_resource type="Script" uid="uid://b4g4f25ib0xie" path="res://assets/scripts/arcade_selector.gd" id="1_2aob1"]
+
+[node name="ArcadeSelector" type="Control" unique_id=72425342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2aob1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2099763992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=682184799]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

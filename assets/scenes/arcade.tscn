@@ -89,3 +89,4 @@ grow_vertical = 1
 [connection signal="pressed" from="Screws/Button2" to="." method="_on_screw_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button3" to="." method="_on_screw_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button4" to="." method="_on_screw_pressed" flags=18]
+[connection signal="wires_finished" from="WiresPanel" to="." method="_on_wires_panel_wires_finished"]

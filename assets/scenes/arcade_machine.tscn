@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://rjpjapc8643p"]
+
+[ext_resource type="Texture2D" uid="uid://d34w1bvymd05g" path="res://assets/sprites/arcade/mock_arcade_zoomed.png" id="1_uojcj"]
+[ext_resource type="PackedScene" uid="uid://k8yiw0a6320p" path="res://assets/scenes/arcade_selector.tscn" id="2_ver6a"]
+
+[node name="ArcadeMachine" type="Node2D" unique_id=762990355]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2087828244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ArcadeSelector" parent="." unique_id=72425342 instance=ExtResource("2_ver6a")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 61.0
+offset_top = 41.0
+offset_right = 412.0
+offset_bottom = 246.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1281683268]
+texture = ExtResource("1_uojcj")
+centered = false

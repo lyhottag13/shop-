@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c1omgjifhm7wc"]
+
+[ext_resource type="Script" uid="uid://bkw71x5l1wvw" path="res://assets/scenes/game_box.gd" id="1_6e73j"]
+[ext_resource type="Texture2D" uid="uid://creh0088lm2mg" path="res://assets/sprites/arcade/games/pickaxe_icon.png" id="1_ym1re"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u5n3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="GameBox" type="MarginContainer" unique_id=938003358]
+mouse_filter = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_6e73j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=611831472]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1329245314]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_4u5n3")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer" unique_id=965325843]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_ym1re")
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=238787693]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cave Explorer"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
