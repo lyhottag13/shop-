@@ -1,4 +1,5 @@
-class_name Game extends Node
+class_name Game 
+extends Node
 
 signal goto_arcade
 
