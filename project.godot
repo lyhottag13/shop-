@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="shop!"
-run/main_scene="uid://d36g6yvqkag6g"
+run/main_scene="uid://1xnpv18n6g2a"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dm0rvipxe8r6m"
 

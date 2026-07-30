@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1omgjifhm7wc"]
 
-[ext_resource type="Script" uid="uid://bkw71x5l1wvw" path="res://assets/scenes/game_box.gd" id="1_6e73j"]
+[ext_resource type="Script" uid="uid://bkw71x5l1wvw" path="res://assets/scripts/game_box.gd" id="1_6e73j"]
 [ext_resource type="Texture2D" uid="uid://creh0088lm2mg" path="res://assets/sprites/arcade/games/pickaxe_icon.png" id="1_ym1re"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u5n3"]

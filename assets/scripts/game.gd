@@ -1,5 +1,7 @@
 class_name Game extends Node
 
+signal goto_arcade
+
 @onready var ali_shop_button: Button = %AliShopButton
 @onready var dialogue_box: DialogueBox = %DialogueBox
 @onready var background: TextureRect = $Background
@@ -12,12 +14,7 @@ class_name Game extends Node
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var music: AudioStreamPlayer = $Music
 @onready var cursor_stopper: Control = %CursorStopper
-
-#region CURSOR
-const cursor_normal = preload("uid://favkw5srtb07")
-const cursor_wait = preload("uid://cg7qrew34rpr")
-const cursor_highlight = preload("uid://h8vim3ghdnwp")
-#endregion
+@onready var button: Button = $UI/Button
 
 var can_interact := true
 
@@ -25,20 +22,6 @@ enum CUTSCENE_TYPE {
 	ITEM,
 	SEQUENCE
 }
-
-
-func _ready() -> void:
-	Input.set_custom_mouse_cursor(cursor_normal)
-	Input.set_custom_mouse_cursor(cursor_wait, Input.CURSOR_WAIT)
-	Input.set_custom_mouse_cursor(cursor_highlight, Input.CURSOR_POINTING_HAND)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("escape"):
-		get_tree().quit()
-	elif event is InputEventMouseButton:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-
 
 func _on_interactable_pressed(sequence_key: String) -> void:
 	handle_cutscene(CUTSCENE_TYPE.SEQUENCE, sequence_key)
@@ -57,6 +40,7 @@ func handle_sequence(key: String):
 			appear_shop()
 			ali.play_animation("idle")
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
+			button.show()
 		"banter":
 			var random_index = randi_range(0, 2)
 			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
@@ -165,3 +149,7 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 
 func _on_ali_sign_left_hand() -> void:
 	sign_animation_player.play("throw_sign")
+
+
+func _on_button_pressed() -> void:
+	goto_arcade.emit()

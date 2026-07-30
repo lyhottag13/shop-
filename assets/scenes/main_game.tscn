@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://1xnpv18n6g2a"]
+
+[ext_resource type="Script" uid="uid://cktb68oi8150c" path="res://assets/scripts/main_game.gd" id="1_tyt4a"]
+[ext_resource type="Script" uid="uid://bx0wxsuqf2cnp" path="res://assets/scripts/systems.gd" id="2_8ftvu"]
+[ext_resource type="PackedScene" uid="uid://d36g6yvqkag6g" path="res://assets/scenes/game.tscn" id="2_u65v5"]
+
+[node name="MainGame" type="Node" unique_id=1598721179]
+script = ExtResource("1_tyt4a")
+
+[node name="Systems" type="Node" parent="." unique_id=465136400]
+script = ExtResource("2_8ftvu")
+
+[node name="World" type="Node2D" parent="." unique_id=196865380]
+unique_name_in_owner = true
+
+[node name="Game" parent="World" unique_id=602859619 instance=ExtResource("2_u65v5")]
+
+[node name="GUI" type="Control" parent="." unique_id=130308307]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="goto_arcade" from="World/Game" to="." method="_on_game_goto_arcade"]

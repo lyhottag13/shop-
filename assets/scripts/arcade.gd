@@ -3,6 +3,7 @@ extends Node2D
 
 signal screwdriver_collected
 signal wires_finished
+signal goto_arcade_machine
 
 @onready var screwdriver_button: Button = $ScrewdriverButton
 @onready var screws: Control = %Screws
@@ -44,4 +45,4 @@ func open_wires_panel(source: Button):
 
 
 func _on_wires_panel_wires_finished() -> void:
-	wires_finished.emit()
+	goto_arcade_machine.emit()

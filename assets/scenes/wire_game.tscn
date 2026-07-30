@@ -24,7 +24,6 @@ atlas = ExtResource("2_7gi43")
 region = Rect2(160, 0, 40, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybvym"]
-atlas = ExtResource("2_7gi43")
 
 [node name="WireGame" type="Node2D" unique_id=2032007358]
 script = ExtResource("1_5uhwf")
@@ -98,7 +97,7 @@ stretch_mode = 3
 layout_mode = 0
 offset_left = 256.0
 offset_top = 45.0
-offset_right = 736.0
+offset_right = 358.0
 offset_bottom = 85.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 3
