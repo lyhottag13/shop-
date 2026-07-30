@@ -2,10 +2,37 @@
 
 [ext_resource type="Texture2D" uid="uid://d34w1bvymd05g" path="res://assets/sprites/arcade/mock_arcade_zoomed.png" id="1_uojcj"]
 [ext_resource type="PackedScene" uid="uid://k8yiw0a6320p" path="res://assets/scenes/arcade_selector.tscn" id="2_ver6a"]
+[ext_resource type="Shader" uid="uid://cdq7v6y42a3ji" path="res://assets/shaders/arcade_machine.gdshader" id="2_yh62r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbaxx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yh62r"]
+shader = ExtResource("2_yh62r")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.974000046265
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.5
 
 [node name="ArcadeMachine" type="Node2D" unique_id=762990355]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2087828244]
+[node name="SelectorBackground" type="ColorRect" parent="." unique_id=2087828244]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,18 +40,27 @@ offset_right = 480.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.203125, 0.203125, 0.203125, 1)
 
 [node name="ArcadeSelector" parent="." unique_id=72425342 instance=ExtResource("2_ver6a")]
+material = SubResource("ShaderMaterial_qbaxx")
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 61.0
-offset_top = 41.0
-offset_right = 412.0
+offset_left = 62.0
+offset_top = 39.0
+offset_right = 425.0
 offset_bottom = 246.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1044586129]
+material = SubResource("ShaderMaterial_yh62r")
+offset_left = 45.0
+offset_top = 30.0
+offset_right = 427.0
+offset_bottom = 258.0
+mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1281683268]
 texture = ExtResource("1_uojcj")

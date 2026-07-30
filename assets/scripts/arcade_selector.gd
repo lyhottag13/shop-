@@ -5,6 +5,7 @@ const GAME_BOX = preload("uid://c1omgjifhm7wc")
 
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 
+
 func _ready() -> void:
 	for game_data: Dictionary in ArcadeGames.games:
 		var new_game_box = GAME_BOX.instantiate()

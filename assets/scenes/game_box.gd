@@ -23,3 +23,10 @@ func set_text(text: String):
 
 func set_link(link: String):
 	self.link = link
+
+
+func _on_mouse_entered() -> void:
+	label.add_theme_color_override("font_color", Color(0.969, 1.0, 0.0, 1.0))
+
+func _on_mouse_exited() -> void:
+	label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
