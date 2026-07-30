@@ -6,7 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://assets/scenes/ali.tscn" id="3_cb5na"]
 [ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://assets/scenes/shop_menu.tscn" id="3_j62u1"]
 [ext_resource type="AudioStream" uid="uid://m3doq8rl38fn" path="res://assets/sounds/shop.mp3" id="5_j62u1"]
+[ext_resource type="Texture2D" uid="uid://db1eacf7dqeht" path="res://assets/sprites/shop_menu/arcade_sign.png" id="6_wfsp4"]
 [ext_resource type="Texture2D" uid="uid://de7enbwrjau6p" path="res://assets/sprites/ali/Closed Sign.png" id="7_3w2km"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfsp4"]
+atlas = ExtResource("6_wfsp4")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw37s"]
+atlas = ExtResource("6_wfsp4")
+region = Rect2(100, 0, 100, 50)
 
 [sub_resource type="Animation" id="Animation_cb5na"]
 length = 0.001
@@ -392,15 +401,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 4
 
-[node name="Button" type="Button" parent="UI" unique_id=1002081680]
-visible = false
+[node name="ArcadeSwitcherButton" type="TextureButton" parent="UI" unique_id=2055298337]
+unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -60.0
-offset_bottom = 39.0
+offset_left = -123.0
+offset_top = -50.0
+offset_right = -19.0
 grow_horizontal = 0
-text = "Goto Arcade"
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_wfsp4")
+texture_hover = SubResource("AtlasTexture_pw37s")
 
 [node name="AliAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1169394056]
 unique_name_in_owner = true
@@ -442,4 +454,4 @@ texture = ExtResource("7_3w2km")
 [connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_interactable_pressed" flags=6 binds= ["remove_sign"]]
 [connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
 [connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]
-[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/ArcadeSwitcherButton" to="." method="_on_button_pressed"]

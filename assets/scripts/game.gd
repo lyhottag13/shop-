@@ -15,7 +15,7 @@ signal goto_arcade
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var music: AudioStreamPlayer = $Music
 @onready var cursor_stopper: Control = %CursorStopper
-@onready var button: Button = $UI/Button
+@onready var arcade_switcher_button: TextureButton = %ArcadeSwitcherButton
 
 var can_interact := true
 
@@ -41,7 +41,9 @@ func handle_sequence(key: String):
 			appear_shop()
 			ali.play_animation("idle")
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
-			button.show()
+			
+			const ENDING_POSITION = Vector2(357, 0)
+			create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		"banter":
 			var random_index = randi_range(0, 2)
 			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
