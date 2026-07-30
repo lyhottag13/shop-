@@ -31,6 +31,8 @@ func _on_interactable_pressed(sequence_key: String) -> void:
 func handle_sequence(key: String):
 	match key:
 		"remove_sign":
+			if ali_shop_button.pressed.is_connected(_on_interactable_pressed):
+				ali_shop_button.pressed.disconnect(_on_interactable_pressed)
 			background_animation_player.play("fade_to_yellow")
 			ali_animation_player.play("light_up")
 			ali.play_animation("removing_sign")
@@ -41,7 +43,7 @@ func handle_sequence(key: String):
 			appear_shop()
 			ali.play_animation("idle")
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
-			
+	
 			const ENDING_POSITION = Vector2(357, 0)
 			create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		"banter":

@@ -4,20 +4,24 @@ extends Node2D
 signal screwdriver_collected
 signal wires_finished
 signal goto_arcade_machine
+signal goto_shop
+
+const PANEL_SIZE = Vector2(90, 50)
+const MAX_SCREWS = 4
 
 @onready var screwdriver_button: Button = $ScrewdriverButton
 @onready var screws: Control = %Screws
 @onready var wires_panel: Control = $WiresPanel
-
-const PANEL_SIZE = Vector2(90, 50)
-const MAX_SCREWS = 4
+@onready var goto_shop_button: TextureButton = %GotoShopButton
 
 var screws_collected := 0
 var is_screwdriver_collected := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	const ENDING_POSITION = Vector2(17, 220)
+	create_tween().tween_property(goto_shop_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+
 
 
 func _on_screwdriver_button_pressed(source: Button) -> void:
@@ -46,3 +50,7 @@ func open_wires_panel(source: Button):
 
 func _on_wires_panel_wires_finished() -> void:
 	goto_arcade_machine.emit()
+
+
+func _on_goto_shop_button_pressed() -> void:
+	goto_shop.emit()

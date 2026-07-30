@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bystuychx5vtl" path="res://assets/scripts/arcade.gd" id="1_q47is"]
 [ext_resource type="PackedScene" uid="uid://u2lte5ws17hj" path="res://assets/scenes/wires_panel.tscn" id="2_3nx4w"]
 [ext_resource type="Texture2D" uid="uid://dro5gfg6ec5rj" path="res://assets/sprites/arcade/MOCKCLOSET.png" id="2_8yvdn"]
+[ext_resource type="Texture2D" uid="uid://cmld1f3casax" path="res://assets/sprites/shop_menu/goto_shop_sign.png" id="4_edfqx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3nx4w"]
 animations = [{
@@ -14,6 +15,14 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cix3"]
+atlas = ExtResource("4_edfqx")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td6fs"]
+atlas = ExtResource("4_edfqx")
+region = Rect2(100, 0, 100, 50)
 
 [node name="Arcade" type="Node2D" unique_id=22590857]
 script = ExtResource("1_q47is")
@@ -84,9 +93,19 @@ offset_bottom = 270.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="GotoShopButton" type="TextureButton" parent="." unique_id=2041755169]
+unique_name_in_owner = true
+offset_left = 17.0
+offset_top = 270.0
+offset_right = 117.0
+offset_bottom = 320.0
+texture_normal = SubResource("AtlasTexture_5cix3")
+texture_hover = SubResource("AtlasTexture_td6fs")
+
 [connection signal="pressed" from="ScrewdriverButton" to="." method="_on_screwdriver_button_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button" to="." method="_on_screw_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button2" to="." method="_on_screw_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button3" to="." method="_on_screw_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button4" to="." method="_on_screw_pressed" flags=18]
 [connection signal="wires_finished" from="WiresPanel" to="." method="_on_wires_panel_wires_finished"]
+[connection signal="pressed" from="GotoShopButton" to="." method="_on_goto_shop_button_pressed"]
