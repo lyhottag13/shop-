@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b4psl77xhot5m" path="res://assets/sprites/ali/Ali Shopkeeper (Idle) 132x132.png" id="4_t8lpf"]
 [ext_resource type="Texture2D" uid="uid://bxcd3bja4w8qu" path="res://assets/sprites/ali/Ali Shopkeeper (Talking).png" id="6_geru5"]
 [ext_resource type="Texture2D" uid="uid://d0isnrquvx7at" path="res://assets/sprites/ali/thorn_ring.webp" id="7_a658e"]
+[ext_resource type="Texture2D" uid="uid://cjtob5x136y5m" path="res://assets/sprites/ali/Ali Shopkeeper ENA (Speaking).png" id="7_erxa7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7o8l"]
 atlas = ExtResource("3_ohukh")
@@ -336,6 +337,30 @@ region = Rect2(132, 0, 132, 132)
 atlas = ExtResource("6_geru5")
 region = Rect2(0, 132, 132, 132)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2tn"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(0, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbj6d"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(132, 0, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da0k8"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(0, 132, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0u7a"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(132, 132, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqpku"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(0, 264, 132, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2nj3"]
+atlas = ExtResource("7_erxa7")
+region = Rect2(132, 264, 132, 132)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_j57ej"]
 atlas = ExtResource("4_t8lpf")
 region = Rect2(0, 0, 132, 132)
@@ -627,6 +652,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbj6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da0k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0u7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqpku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2nj3")
+}],
+"loop": true,
+"name": &"talking_ena",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j57ej")
 }],
 "loop": true,
@@ -647,7 +695,7 @@ script = ExtResource("1_qeue6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=812268796]
 sprite_frames = SubResource("SpriteFrames_58s6x")
-animation = &"talking"
+animation = &"talking_ena"
 autoplay = "closed"
-frame_progress = 0.6313314
+frame_progress = 0.2668375
 offset = Vector2(0, -66)

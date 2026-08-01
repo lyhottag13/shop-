@@ -116,11 +116,14 @@ func _on_shop_menu_item_clicked(item_name: String) -> void:
 
 func handle_shop_item(item_name: String):
 	var dialogue: Array = ItemData.item_data[item_name].dialogue
-	await handle_dialogue(dialogue)
+	if item_name == "ena":
+		await handle_dialogue(dialogue, "talking_ena")
+	else:
+		await handle_dialogue(dialogue)
 
 
-func handle_dialogue(dialogue: Array):
-	ali.play_animation("talking")
+func handle_dialogue(dialogue: Array, animation: String = "talking"):
+	ali.play_animation(animation)
 	disappear_shop()
 	for dialogue_data: Dictionary in dialogue:
 		await dialogue_box.show_text(dialogue_data)

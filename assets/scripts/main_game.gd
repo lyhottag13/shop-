@@ -30,7 +30,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
-		get_tree().quit()
+		if not OS.has_feature("web"):
+			get_tree().quit()
 	elif event is InputEventMouseButton:
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
