@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func play_background(sound_name: Constants.BACKGROUNDS):
 	var sound_to_play: AudioStream
-	
 	match sound_name:
 		Constants.BACKGROUNDS.SHOP:
 			sound_to_play = _BACKGROUNDS.SHOP
@@ -30,8 +29,6 @@ func play_background(sound_name: Constants.BACKGROUNDS):
 	
 	_background_sound.stream = sound_to_play
 	_background_sound.play()
-	_background_sound.volume_linear = 0
-	create_tween().tween_property(_background_sound, "volume_linear", 1, 1)
 
 
 func _on_background_sound_finished(source: AudioStreamPlayer) -> void:
@@ -39,3 +36,20 @@ func _on_background_sound_finished(source: AudioStreamPlayer) -> void:
 
 func stop_background() -> void:
 	_background_sound.stop()
+
+
+func clear_background() -> void:
+	_background_sound.stream = null
+
+
+func has_background() -> bool:
+	return _background_sound.stream != null
+
+
+func print() -> void:
+	print(_background_sound.stream)
+
+
+func fade_background(start: float, end: float, duration: float = 1):
+	_background_sound.volume_linear = start
+	create_tween().tween_property(_background_sound, "volume_linear", end, duration)

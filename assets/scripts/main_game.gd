@@ -42,17 +42,22 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	cursor_stopper.show()
 	
 	if fade:
-		var out_tween = create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 1.0), FADE_TIME)
-		await out_tween.finished
+		SoundManager.fade_background(1, 0)
+		await create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 1.0), FADE_TIME).finished
+	
 	if current_scene:
 		current_scene.queue_free()
+	
+	SoundManager.clear_background()
 	var s = new_scene.instantiate()
 	world.add_child(s)
 	current_scene = s
-	if fade:
-		var in_tween = create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 0.0), FADE_TIME)
-		await in_tween.finished
 	
+	if fade:
+		if SoundManager.has_background():
+			SoundManager.fade_background(0, 1)
+		await create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 0.0), FADE_TIME).finished
+		
 	cursor_stopper.hide()
 
 

@@ -37,6 +37,7 @@ func handle_sequence(key: String):
 			ali.play_animation("removing_sign")
 			await Utils.sleep(1)
 			SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
+			SoundManager.fade_background(0, 1)
 			start_howdy_text()
 			await ali.play_animation("emerging")
 			appear_shop()

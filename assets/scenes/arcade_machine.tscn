@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d34w1bvymd05g" path="res://assets/sprites/arcade/mock_arcade_zoomed.png" id="1_uojcj"]
 [ext_resource type="PackedScene" uid="uid://k8yiw0a6320p" path="res://assets/scenes/arcade_selector.tscn" id="2_ver6a"]
 [ext_resource type="Shader" uid="uid://cdq7v6y42a3ji" path="res://assets/shaders/arcade_machine.gdshader" id="2_yh62r"]
-[ext_resource type="AudioStream" uid="uid://co0435k64myon" path="res://assets/sounds/arcade_machine.ogg" id="5_8ydab"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbaxx"]
 
@@ -68,8 +67,3 @@ mouse_filter = 2
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1281683268]
 texture = ExtResource("1_uojcj")
 centered = false
-
-[node name="ArcadeMachineHum" type="AudioStreamPlayer" parent="." unique_id=1734738566]
-stream = ExtResource("5_8ydab")
-autoplay = true
-parameters/looping = true

@@ -18,6 +18,9 @@ var is_screwdriver_collected := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SoundManager.play_background(Constants.BACKGROUNDS.ARCADE_AMBIENCE)
+	await Utils.sleep(1)
+	
 	const ENDING_POSITION = Vector2(17, 220)
 	create_tween().tween_property(goto_shop_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
