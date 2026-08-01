@@ -14,6 +14,7 @@ const ARCADE_MACHINE: PackedScene = preload("uid://rjpjapc8643p")
 
 @onready var world: Node2D = %World
 @onready var transition: ColorRect = %Transition
+@onready var cursor_stopper: Panel = $CanvasLayer/CursorStopper
 
 var current_scene: Node
 
@@ -37,6 +38,8 @@ func _input(event: InputEvent) -> void:
 
 func goto_scene(new_scene: PackedScene, fade: bool = true):
 	const FADE_TIME = 1
+	cursor_stopper.show()
+	
 	if fade:
 		var out_tween = create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 1.0), FADE_TIME)
 		await out_tween.finished
@@ -48,6 +51,8 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	if fade:
 		var in_tween = create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 0.0), FADE_TIME)
 		await in_tween.finished
+	
+	cursor_stopper.hide()
 
 
 func _on_game_goto_arcade() -> void:

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cktb68oi8150c" path="res://assets/scripts/main_game.gd" id="1_tyt4a"]
 [ext_resource type="Script" uid="uid://bx0wxsuqf2cnp" path="res://assets/scripts/systems.gd" id="2_8ftvu"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyt4a"]
+
 [node name="MainGame" type="Node" unique_id=1598721179]
 script = ExtResource("1_tyt4a")
 
@@ -32,3 +34,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="CursorStopper" type="Panel" parent="CanvasLayer" unique_id=1476345967]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tyt4a")

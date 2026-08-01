@@ -9,6 +9,10 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [node name="WiresPanel" type="Control" unique_id=1969861105]
 layout_mode = 3
@@ -36,5 +40,6 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qfowd")
 
 [node name="WireGame" parent="MarginContainer/PanelContainer" unique_id=2032007358 instance=ExtResource("1_vyxlh")]
+layout_mode = 2
 
 [connection signal="wires_finished" from="MarginContainer/PanelContainer/WireGame" to="." method="_on_wire_game_wires_finished"]

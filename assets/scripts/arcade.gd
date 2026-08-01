@@ -2,7 +2,6 @@ class_name Arcade
 extends Node2D
 
 signal screwdriver_collected
-signal wires_finished
 signal goto_arcade_machine
 signal goto_shop
 

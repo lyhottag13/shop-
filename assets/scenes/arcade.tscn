@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://u2lte5ws17hj" path="res://assets/scenes/wires_panel.tscn" id="2_3nx4w"]
 [ext_resource type="Texture2D" uid="uid://dro5gfg6ec5rj" path="res://assets/sprites/arcade/MOCKCLOSET.png" id="2_8yvdn"]
 [ext_resource type="Texture2D" uid="uid://cmld1f3casax" path="res://assets/sprites/shop_menu/goto_shop_sign.png" id="4_edfqx"]
+[ext_resource type="AudioStream" uid="uid://d0mhtm4n3w37i" path="res://assets/sounds/arcade_ambience.ogg" id="5_5cix3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3nx4w"]
 animations = [{
@@ -101,6 +102,12 @@ offset_right = 117.0
 offset_bottom = 320.0
 texture_normal = SubResource("AtlasTexture_5cix3")
 texture_hover = SubResource("AtlasTexture_td6fs")
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1953964960]
+stream = ExtResource("5_5cix3")
+volume_db = -8.667
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="ScrewdriverButton" to="." method="_on_screwdriver_button_pressed" flags=18]
 [connection signal="pressed" from="Screws/Button" to="." method="_on_screw_pressed" flags=18]
