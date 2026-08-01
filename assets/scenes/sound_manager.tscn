@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://m2vlbwk4amsn"]
+
+[ext_resource type="Script" uid="uid://c4l7ue7bmal6f" path="res://assets/scripts/audio_manager.gd" id="1_88cuj"]
+
+[node name="SoundManager" type="Node" unique_id=1197042462]
+script = ExtResource("1_88cuj")
+
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="." unique_id=1769290224]
+unique_name_in_owner = true
+
+[connection signal="finished" from="BackgroundSound" to="." method="_on_background_sound_finished" flags=18]

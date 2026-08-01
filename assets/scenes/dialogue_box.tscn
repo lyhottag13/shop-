@@ -109,4 +109,3 @@ stream = ExtResource("3_00vgv")
 [node name="TextSoundDialogue" type="AudioStreamPlayer" parent="." unique_id=2005862019]
 unique_name_in_owner = true
 stream = ExtResource("4_amlr8")
-playback_type = 2

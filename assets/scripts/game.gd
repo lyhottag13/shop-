@@ -13,7 +13,6 @@ signal goto_arcade
 @onready var background_animation_player: AnimationPlayer = %BackgroundAnimationPlayer
 @onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
-@onready var music: AudioStreamPlayer = $Music
 @onready var cursor_stopper: Control = %CursorStopper
 @onready var arcade_switcher_button: TextureButton = %ArcadeSwitcherButton
 
@@ -37,7 +36,7 @@ func handle_sequence(key: String):
 			ali_animation_player.play("light_up")
 			ali.play_animation("removing_sign")
 			await Utils.sleep(1)
-			music.play()
+			SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
 			start_howdy_text()
 			await ali.play_animation("emerging")
 			appear_shop()
@@ -55,11 +54,11 @@ func handle_sequence(key: String):
 			dialogue_box.clear()
 			background.modulate = Color(1.0, 0.559, 0.559, 1.0)
 			ali.play_animation("thorn_ring")
-			music.volume_linear = 0
+			SoundManager.stop_background()
 			await Utils.sleep(3)
+			SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
 			background.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			ali.play_animation("idle")
-			music.volume_linear = 1
 			appear_shop()
 
 

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cc68mc682hq8x" path="res://assets/scenes/dialogue_box.tscn" id="2_5gf0t"]
 [ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://assets/scenes/ali.tscn" id="3_cb5na"]
 [ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://assets/scenes/shop_menu.tscn" id="3_j62u1"]
-[ext_resource type="AudioStream" uid="uid://m3doq8rl38fn" path="res://assets/sounds/shop.mp3" id="5_j62u1"]
 [ext_resource type="Texture2D" uid="uid://db1eacf7dqeht" path="res://assets/sprites/shop_menu/arcade_sign.png" id="6_wfsp4"]
 [ext_resource type="Texture2D" uid="uid://de7enbwrjau6p" path="res://assets/sprites/ali/Closed Sign.png" id="7_3w2km"]
 
@@ -440,10 +439,6 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_fqk1v")
 
 [node name="Buttons" type="Node" parent="." unique_id=77410258]
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=752594792]
-stream = ExtResource("5_j62u1")
-parameters/looping = true
 
 [node name="ClosedSign" type="Sprite2D" parent="." unique_id=1622670696]
 visible = false
