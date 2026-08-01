@@ -24,8 +24,8 @@ func set_text(text: String):
 	label.text = text
 
 
-func set_link(link: String):
-	self.link = link
+func set_link(p_link: String):
+	link = p_link
 
 
 func _on_mouse_entered() -> void:
