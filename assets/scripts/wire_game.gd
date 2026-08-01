@@ -12,7 +12,6 @@ const STARTING_Y = 35
 const ARCADE_WIRE_PUZZLE_TILES = preload("uid://daya30hjmffvp")
 
 @onready var tile_container: Control = $TileContainer
-@onready var sparks: AudioStreamPlayer = $Sparks
 var current_combo: Array[int] = []
 
 func _ready() -> void:
@@ -43,6 +42,8 @@ func _ready() -> void:
 	print(current_combo)
 
 func _on_button_pressed(source: TextureButton, index: int) -> void:
+	SoundManager.play_sfx(Constants.SFX.WIRE)
+	
 	source.rotation_degrees = ceilf(source.rotation_degrees / 90) * 90 # Keeps the tile in perfect 90 degree increments
 	create_tween().tween_property(source, "rotation_degrees", source.rotation_degrees + ROTATION_AMOUNT, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	match index:
@@ -52,7 +53,6 @@ func _on_button_pressed(source: TextureButton, index: int) -> void:
 			current_combo[index] = (current_combo[index] + 1) % POSSIBLE_ROTATIONS
 		
 	if current_combo.all(func(num: int) -> bool: return num == 0):
-		sparks.play()
-		await sparks.finished
+		await SoundManager.play_sfx(Constants.SFX.SPARKS)
 		wires_finished.emit()
 		queue_free()

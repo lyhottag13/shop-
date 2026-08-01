@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://assets/scripts/dialogue_box.gd" id="1_wj3ed"]
 [ext_resource type="Texture2D" uid="uid://bhv2eau8p20ww" path="res://assets/sprites/ali/Dialogue Ali.png" id="2_amlr8"]
-[ext_resource type="AudioStream" uid="uid://bfmamerromkdh" path="res://assets/sounds/generic1.mp3" id="3_00vgv"]
 [ext_resource type="Texture2D" uid="uid://d0et01ap3mu6w" path="res://assets/sprites/ali/Dialogue Ali (Speaking).png" id="3_u1vlu"]
-[ext_resource type="AudioStream" uid="uid://ccpi3m1uvrff5" path="res://assets/sounds/generic2.mp3" id="4_amlr8"]
 [ext_resource type="PackedScene" uid="uid://q7c7r2ubg0t0" path="res://assets/scenes/star_and_label_container.tscn" id="4_u1vlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
@@ -101,11 +99,3 @@ theme_override_constants/separation = 2
 
 [node name="HBoxContainer" parent="PanelContainer/HBoxContainer/MarginContainer2/TextContainer" unique_id=2090071753 instance=ExtResource("4_u1vlu")]
 layout_mode = 2
-
-[node name="TextSoundMenu" type="AudioStreamPlayer" parent="." unique_id=155827660]
-unique_name_in_owner = true
-stream = ExtResource("3_00vgv")
-
-[node name="TextSoundDialogue" type="AudioStreamPlayer" parent="." unique_id=2005862019]
-unique_name_in_owner = true
-stream = ExtResource("4_amlr8")

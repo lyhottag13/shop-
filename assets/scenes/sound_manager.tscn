@@ -8,4 +8,7 @@ script = ExtResource("1_88cuj")
 [node name="BackgroundSound" type="AudioStreamPlayer" parent="." unique_id=1769290224]
 unique_name_in_owner = true
 
+[node name="SFXContainer" type="Node" parent="." unique_id=1574921779]
+unique_name_in_owner = true
+
 [connection signal="finished" from="BackgroundSound" to="." method="_on_background_sound_finished" flags=18]

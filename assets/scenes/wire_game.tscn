@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b48okv1q3nx7s" path="res://assets/scripts/wire_game.gd" id="1_5uhwf"]
 [ext_resource type="Texture2D" uid="uid://b1vnkoc5jy6bn" path="res://assets/sprites/arcade/arcade_wire_puzzle.png" id="2_7gi43"]
-[ext_resource type="AudioStream" uid="uid://c435pm2buah0f" path="res://assets/sounds/electric_sparks.ogg" id="3_5o12v"]
 
 [node name="WireGame" type="Control" unique_id=768055956]
 custom_minimum_size = Vector2(380, 170)
@@ -29,6 +28,3 @@ offset_left = 0.1599884
 offset_top = 0.03999901
 offset_right = -0.10002136
 offset_bottom = -0.040008545
-
-[node name="Sparks" type="AudioStreamPlayer" parent="." unique_id=76421516]
-stream = ExtResource("3_5o12v")

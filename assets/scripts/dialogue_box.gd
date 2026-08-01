@@ -2,8 +2,6 @@ class_name DialogueBox extends Control
 
 signal dialogue_finished
 
-@onready var text_sound_menu: AudioStreamPlayer = %TextSoundMenu
-@onready var text_sound_dialogue: AudioStreamPlayer = %TextSoundDialogue
 @onready var face_sprite: AnimatedSprite2D = %FaceSprite
 @onready var face_container: Control = %FaceContainer
 @onready var text_container: VBoxContainer = %TextContainer
@@ -27,7 +25,6 @@ func show_text(text_properties: Dictionary):
 	var type = text_properties.get("type")
 	var text = text_properties.get("text")
 	var face = text_properties.get("face")
-	print(face)
 	
 	if face != null:
 		show_face()
@@ -41,9 +38,9 @@ func show_text(text_properties: Dictionary):
 			current_container.label.text += character
 			match type:
 				"menu":
-					text_sound_menu.play()
+					SoundManager.play_sfx(Constants.SFX.MENU)
 				_:
-					text_sound_dialogue.play()
+					SoundManager.play_sfx(Constants.SFX.DIALOGUE)
 		
 		
 		if not skip:
