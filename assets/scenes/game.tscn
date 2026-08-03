@@ -391,13 +391,6 @@ mouse_filter = 2
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="ShopMenu" parent="UI" unique_id=737163911 instance=ExtResource("3_j62u1")]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-offset_left = 281.0
-offset_right = 281.0
-
 [node name="ArcadeSwitcherButton" type="TextureButton" parent="UI" unique_id=2055298337]
 unique_name_in_owner = true
 layout_mode = 1
@@ -411,6 +404,13 @@ grow_horizontal = 0
 mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_wfsp4")
 texture_hover = SubResource("AtlasTexture_pw37s")
+
+[node name="ShopMenu" parent="UI" unique_id=737163911 instance=ExtResource("3_j62u1")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 281.0
+offset_right = 281.0
 
 [node name="AliAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1169394056]
 unique_name_in_owner = true
@@ -444,6 +444,6 @@ texture = ExtResource("7_3w2km")
 
 [connection signal="sign_left_hand" from="Ali" to="." method="_on_ali_sign_left_hand"]
 [connection signal="pressed" from="Ali/AliShopButton" to="." method="_on_interactable_pressed" flags=6 binds= ["remove_sign"]]
+[connection signal="pressed" from="UI/ArcadeSwitcherButton" to="." method="_on_button_pressed"]
 [connection signal="item_clicked" from="UI/ShopMenu" to="." method="_on_shop_menu_item_clicked"]
 [connection signal="toggle_shop" from="UI/ShopMenu" to="." method="_on_shop_menu_toggle_shop"]
-[connection signal="pressed" from="UI/ArcadeSwitcherButton" to="." method="_on_button_pressed"]

@@ -36,6 +36,7 @@ func _on_screwdriver_button_pressed(source: Button) -> void:
 
 func _on_screw_pressed(source: Button) -> void:
 	if is_screwdriver_collected:
+		#source.pressed.disconnect(_on_screw_pressed)
 		const UNSCREW_TIME = 1
 		const DESIRED_SCALE = 1.4
 		create_tween().tween_property(source, "rotation_degrees", 720, UNSCREW_TIME)
