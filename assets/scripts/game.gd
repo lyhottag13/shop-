@@ -1,5 +1,5 @@
 class_name Game 
-extends Node
+extends Node2D
 
 signal goto_arcade
 

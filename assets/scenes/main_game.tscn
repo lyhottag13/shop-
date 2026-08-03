@@ -3,14 +3,30 @@
 [ext_resource type="Script" uid="uid://cktb68oi8150c" path="res://assets/scripts/main_game.gd" id="1_tyt4a"]
 [ext_resource type="Script" uid="uid://bx0wxsuqf2cnp" path="res://assets/scripts/systems.gd" id="2_8ftvu"]
 
+[sub_resource type="Gradient" id="Gradient_tyt4a"]
+offsets = PackedFloat32Array(0, 0.1403162, 0.8517786, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u65v5"]
+gradient = SubResource("Gradient_tyt4a")
+
 [node name="MainGame" type="Node" unique_id=1598721179]
 script = ExtResource("1_tyt4a")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1132828525]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Systems" type="Node" parent="." unique_id=465136400]
 script = ExtResource("2_8ftvu")
 
 [node name="World" type="Node2D" parent="." unique_id=196865380]
 unique_name_in_owner = true
+clip_children = 1
 
 [node name="GUI" type="Control" parent="." unique_id=130308307]
 layout_mode = 3
@@ -23,12 +39,9 @@ mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=892854060]
 
-[node name="Transition" type="ColorRect" parent="CanvasLayer" unique_id=1681734590]
+[node name="Transition" type="TextureRect" parent="CanvasLayer" unique_id=323487102]
 unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+offset_left = 480.0
+offset_right = 1080.0
+offset_bottom = 270.0
+texture = SubResource("GradientTexture1D_u65v5")

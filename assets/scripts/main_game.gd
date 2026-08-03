@@ -12,9 +12,8 @@ const SHOP: PackedScene = preload("uid://d36g6yvqkag6g")
 const ARCADE: PackedScene = preload("uid://cj7mcrd10qgs")
 const ARCADE_MACHINE: PackedScene = preload("uid://rjpjapc8643p")
 
-@onready var control: Control = %Control
 @onready var world: Node2D = %World
-@onready var transition: ColorRect = %Transition
+@onready var transition: TextureRect = %Transition
 
 var current_scene: Node2D
 
@@ -38,13 +37,16 @@ func _input(event: InputEvent) -> void:
 
 func goto_scene(new_scene: PackedScene, fade: bool = true):
 	const FADE_TIME = 0.7
+	const SCENE_FADE_DISTANCE = 30
+	const SCENE_TRANS = Tween.TRANS_QUAD
+	const SCENE_EASE = Tween.EASE_IN_OUT
 	CursorStopper.show()
 	
 	if fade:
 		SoundManager.fade_background(1, 0)
-		create_tween().tween_property(control, "position", Vector2(-480, 0), FADE_TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-		await create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 1.0), FADE_TIME).finished
-		
+		transition.set_position(Vector2(650, 0))
+		create_tween().tween_property(world, "position:x", -SCENE_FADE_DISTANCE, FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS)
+		await create_tween().tween_property(transition, "position", Vector2(-75, 0), FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS).finished
 		
 	if current_scene:
 		current_scene.queue_free()
@@ -55,11 +57,11 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	current_scene = s
 	
 	if fade:
-		control.set_position(Vector2(480, 0))
-		create_tween().tween_property(control, "position", Vector2.ZERO, FADE_TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 		if SoundManager.has_background():
 			SoundManager.fade_background(0, 1)
-		await create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 0.0), FADE_TIME).finished
+		world.position.x = SCENE_FADE_DISTANCE
+		create_tween().tween_property(world, "position:x", 0, FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS)
+		await create_tween().tween_property(transition, "position", Vector2(-650, 0), FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS).finished
 		
 	CursorStopper.hide()
 

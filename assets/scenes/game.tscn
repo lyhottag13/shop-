@@ -354,7 +354,7 @@ _data = {
 &"throw_sign": SubResource("Animation_kc0sw")
 }
 
-[node name="Game" type="Node" unique_id=602859619]
+[node name="Game" type="Node2D" unique_id=1951983532]
 script = ExtResource("1_cb66b")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1950730460]
@@ -362,6 +362,8 @@ modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5aext")
@@ -379,10 +381,13 @@ mouse_default_cursor_shape = 2
 flat = true
 
 [node name="UI" type="Control" parent="." unique_id=2021057580]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
