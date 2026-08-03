@@ -27,14 +27,27 @@ func _ready() -> void:
 
 
 func _on_screwdriver_button_pressed(source: Button) -> void:
-	source.queue_free()
 	screwdriver_collected.emit()
 	is_screwdriver_collected = true
+	var new_position = Vector2(source.position) + Vector2(0, -20)
+	await create_tween().tween_property(source, "position", new_position, 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).finished
+	source.queue_free()
 
 
 func _on_screw_pressed(source: Button) -> void:
 	if is_screwdriver_collected:
-		source.queue_free()
+		const UNSCREW_TIME = 1
+		const DESIRED_SCALE = 1.4
+		create_tween().tween_property(source, "rotation_degrees", 720, UNSCREW_TIME)
+		await create_tween().tween_property(source, "scale", Vector2(DESIRED_SCALE, DESIRED_SCALE), UNSCREW_TIME).finished
+		
+		const DEVIATION = 20
+		const TWEEN_TIME = 1
+		var random_x: int = DEVIATION * [-1, 1].pick_random()
+		var new_position := source.position + Vector2(random_x, 200)
+		create_tween().tween_property(source, "position:x", new_position.x, TWEEN_TIME)
+		create_tween().tween_property(source, "position:y", new_position.y, TWEEN_TIME).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		
 		screws_collected += 1
 		
 		if screws_collected == MAX_SCREWS:

@@ -16,6 +16,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edfqx"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cix3"]
 atlas = ExtResource("4_edfqx")
 region = Rect2(0, 0, 100, 50)
@@ -51,24 +54,33 @@ offset_bottom = 206.0
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
 
 [node name="Button2" type="Button" parent="Screws" unique_id=1938735600]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
+offset_top = 3.0
+offset_right = 8.0
+offset_bottom = 11.0
 grow_horizontal = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
 
 [node name="Button3" type="Button" parent="Screws" unique_id=1937916747]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
-offset_right = 8.0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 3.0
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
 
 [node name="Button4" type="Button" parent="Screws" unique_id=2005606606]
 layout_mode = 1
@@ -77,10 +89,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
+offset_left = -16.0
+offset_top = -3.0
+offset_right = -8.0
+offset_bottom = 5.0
 grow_horizontal = 0
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
 
 [node name="WiresPanel" parent="." unique_id=976445622 instance=ExtResource("2_3nx4w")]
 visible = false

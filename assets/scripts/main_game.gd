@@ -14,7 +14,6 @@ const ARCADE_MACHINE: PackedScene = preload("uid://rjpjapc8643p")
 
 @onready var world: Node2D = %World
 @onready var transition: ColorRect = %Transition
-@onready var cursor_stopper: Panel = $CanvasLayer/CursorStopper
 
 var current_scene: Node
 
@@ -27,7 +26,6 @@ func _ready() -> void:
 	var game_scene = current_scene as Game
 	game_scene.goto_arcade.connect(_on_game_goto_arcade)
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		if not OS.has_feature("web"):
@@ -39,7 +37,7 @@ func _input(event: InputEvent) -> void:
 
 func goto_scene(new_scene: PackedScene, fade: bool = true):
 	const FADE_TIME = 1
-	cursor_stopper.show()
+	CursorStopper.show()
 	
 	if fade:
 		SoundManager.fade_background(1, 0)
@@ -58,7 +56,7 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 			SoundManager.fade_background(0, 1)
 		await create_tween().tween_property(transition, "color", Color(0.0, 0.0, 0.0, 0.0), FADE_TIME).finished
 		
-	cursor_stopper.hide()
+	CursorStopper.hide()
 
 
 func _on_game_goto_arcade() -> void:

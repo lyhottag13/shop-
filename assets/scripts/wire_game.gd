@@ -53,6 +53,8 @@ func _on_button_pressed(source: TextureButton, index: int) -> void:
 			current_combo[index] = (current_combo[index] + 1) % POSSIBLE_ROTATIONS
 		
 	if current_combo.all(func(num: int) -> bool: return num == 0):
+		CursorStopper.show()
 		await SoundManager.play_sfx(Constants.SFX.SPARKS)
 		wires_finished.emit()
+		CursorStopper.hide()
 		queue_free()

@@ -13,7 +13,6 @@ signal goto_arcade
 @onready var background_animation_player: AnimationPlayer = %BackgroundAnimationPlayer
 @onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
-@onready var cursor_stopper: Control = %CursorStopper
 @onready var arcade_switcher_button: TextureButton = %ArcadeSwitcherButton
 
 var can_interact := true
@@ -140,7 +139,7 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 	if key == "thorn_ring":
 		cutscene_type = CUTSCENE_TYPE.SEQUENCE
 	
-	cursor_stopper.show()
+	CursorStopper.show()
 	
 	can_interact = false
 	match cutscene_type:
@@ -150,7 +149,8 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 			await handle_sequence(key)
 	can_interact = true
 	
-	cursor_stopper.hide()
+	CursorStopper.hide()
+	
 	# Resets the cursor after the cursor_stopper has disappeared.
 	Input.parse_input_event(InputEventMouseMotion.new()) 
 
