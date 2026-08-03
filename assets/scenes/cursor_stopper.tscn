@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1ru4vhisancd"]
 
 [node name="CursorStopper" type="CanvasLayer" unique_id=2004234483]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1528574095]
 anchors_preset = 15

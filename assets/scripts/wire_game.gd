@@ -27,6 +27,7 @@ func _ready() -> void:
 			new_tile.pivot_offset_ratio = Vector2(0.5, 0.5)
 			new_tile.position = Vector2(TILE_SIZE * j, TILE_SIZE * i)
 			new_tile.pressed.connect(_on_button_pressed.bind(index), CONNECT_APPEND_SOURCE_OBJECT)
+			
 			var random: int
 			match index:
 				0:
@@ -39,11 +40,9 @@ func _ready() -> void:
 			current_combo.append(random)
 			tile_container.add_child(new_tile)
 			index += 1
-	print(current_combo)
 
 func _on_button_pressed(source: TextureButton, index: int) -> void:
 	SoundManager.play_sfx(Constants.SFX.WIRE)
-	
 	source.rotation_degrees = ceilf(source.rotation_degrees / 90) * 90 # Keeps the tile in perfect 90 degree increments
 	create_tween().tween_property(source, "rotation_degrees", source.rotation_degrees + ROTATION_AMOUNT, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	match index:
@@ -52,6 +51,7 @@ func _on_button_pressed(source: TextureButton, index: int) -> void:
 		_:
 			current_combo[index] = (current_combo[index] + 1) % POSSIBLE_ROTATIONS
 		
+	print(current_combo)
 	if current_combo.all(func(num: int) -> bool: return num == 0):
 		CursorStopper.show()
 		await SoundManager.play_sfx(Constants.SFX.SPARKS)

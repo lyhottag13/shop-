@@ -27,6 +27,7 @@ func _ready() -> void:
 
 
 func _on_screwdriver_button_pressed(source: Button) -> void:
+	source.pressed.disconnect(_on_screwdriver_button_pressed)
 	screwdriver_collected.emit()
 	is_screwdriver_collected = true
 	var new_position = Vector2(source.position) + Vector2(0, -20)
@@ -36,7 +37,7 @@ func _on_screwdriver_button_pressed(source: Button) -> void:
 
 func _on_screw_pressed(source: Button) -> void:
 	if is_screwdriver_collected:
-		#source.pressed.disconnect(_on_screw_pressed)
+		source.pressed.disconnect(_on_screw_pressed)
 		const UNSCREW_TIME = 1
 		const DESIRED_SCALE = 1.4
 		create_tween().tween_property(source, "rotation_degrees", 720, UNSCREW_TIME)

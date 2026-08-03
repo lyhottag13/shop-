@@ -14,6 +14,7 @@ func _gui_input(event: InputEvent) -> void:
 				JavaScriptBridge.eval('window.location.href = "' + link + '"')
 			else:
 				OS.shell_open(link)
+				get_tree().quit()
 
 
 func set_image(texture: CompressedTexture2D):
