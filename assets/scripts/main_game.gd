@@ -39,14 +39,15 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	const FADE_TIME = 0.7
 	const SCENE_FADE_DISTANCE = 30
 	const SCENE_TRANS = Tween.TRANS_QUAD
-	const SCENE_EASE = Tween.EASE_IN_OUT
+	const SCENE_EASE_START = Tween.EASE_IN
+	const SCENE_EASE_END = Tween.EASE_OUT
 	CursorStopper.show()
 	
 	if fade:
 		SoundManager.fade_background(1, 0)
 		transition.set_position(Vector2(650, 0))
-		create_tween().tween_property(world, "position:x", -SCENE_FADE_DISTANCE, FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS)
-		await create_tween().tween_property(transition, "position", Vector2(-75, 0), FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS).finished
+		create_tween().tween_property(world, "position:x", -SCENE_FADE_DISTANCE, FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS)
+		await create_tween().tween_property(transition, "position", Vector2(-75, 0), FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS).finished
 		
 	if current_scene:
 		current_scene.queue_free()
@@ -60,8 +61,8 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 		if SoundManager.has_background():
 			SoundManager.fade_background(0, 1)
 		world.position.x = SCENE_FADE_DISTANCE
-		create_tween().tween_property(world, "position:x", 0, FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS)
-		await create_tween().tween_property(transition, "position", Vector2(-650, 0), FADE_TIME).set_ease(SCENE_EASE).set_trans(SCENE_TRANS).finished
+		create_tween().tween_property(world, "position:x", 0, FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS)
+		await create_tween().tween_property(transition, "position", Vector2(-650, 0), FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS).finished
 		
 	CursorStopper.hide()
 
@@ -75,6 +76,8 @@ func _on_game_goto_arcade() -> void:
 
 func _on_arcade_goto_arcade_machine() -> void:
 	await goto_scene(ARCADE_MACHINE)
+	var arcade_machine_scene = current_scene as ArcadeMachine
+	arcade_machine_scene.goto_arcade_pressed.connect(_on_game_goto_arcade)
 
 func _on_goto_shop() -> void:
 	await goto_scene(SHOP)
