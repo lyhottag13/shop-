@@ -45,7 +45,7 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	
 	if fade:
 		SoundManager.fade_background(1, 0)
-		transition.set_position(Vector2(650, 0))
+		transition.position = Vector2(650, 0)
 		create_tween().tween_property(world, "position:x", -SCENE_FADE_DISTANCE, FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS)
 		await create_tween().tween_property(transition, "position", Vector2(-75, 0), FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS).finished
 		
@@ -63,7 +63,7 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 		world.position.x = SCENE_FADE_DISTANCE
 		create_tween().tween_property(world, "position:x", 0, FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS)
 		await create_tween().tween_property(transition, "position", Vector2(-650, 0), FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS).finished
-		
+	
 	CursorStopper.hide()
 
 
@@ -84,3 +84,7 @@ func _on_goto_shop() -> void:
 	var shop_scene = current_scene as Game
 	shop_scene.handle_sequence("remove_sign")
 	shop_scene.goto_arcade.connect(_on_game_goto_arcade)
+
+
+func _fade_to_left_first_half() -> void:
+	pass

@@ -5,13 +5,14 @@ signal screwdriver_collected
 signal goto_arcade_machine
 signal goto_shop
 
-const PANEL_SIZE = Vector2(90, 50)
+const PANEL_SIZE = Vector2(80, 52)
 const MAX_SCREWS = 4
 
-@onready var screwdriver_button: Button = $ScrewdriverButton
+@onready var screwdriver_button: TextureButton = $ScrewdriverButton
 @onready var screws: Control = %Screws
 @onready var wires_panel: Control = $WiresPanel
 @onready var goto_shop_button: TextureButton = %GotoShopButton
+@onready var panel: Sprite2D = %Panel
 
 var screws_collected := 0
 var is_screwdriver_collected := false
@@ -26,16 +27,17 @@ func _ready() -> void:
 
 
 
-func _on_screwdriver_button_pressed(source: Button) -> void:
+func _on_screwdriver_button_pressed(source: TextureButton) -> void:
 	source.pressed.disconnect(_on_screwdriver_button_pressed)
 	screwdriver_collected.emit()
 	is_screwdriver_collected = true
 	var new_position = Vector2(source.position) + Vector2(0, -20)
 	await create_tween().tween_property(source, "position", new_position, 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).finished
+	await create_tween().tween_property(source, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.5).finished
 	source.queue_free()
 
 
-func _on_screw_pressed(source: Button) -> void:
+func _on_screw_pressed(source: TextureButton) -> void:
 	if is_screwdriver_collected:
 		source.pressed.disconnect(_on_screw_pressed)
 		const UNSCREW_TIME = 1
@@ -53,10 +55,14 @@ func _on_screw_pressed(source: Button) -> void:
 		screws_collected += 1
 		
 		if screws_collected == MAX_SCREWS:
+			create_tween().tween_property(panel, "position:y", 300, 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+			create_tween().tween_property(panel, "rotation_degrees", 180, 1)
 			var new_button := Button.new()
 			new_button.size = PANEL_SIZE
-			new_button.position = Vector2(196, 156)
+			new_button.position = Vector2(201, 193)
+			new_button.flat = true
 			new_button.pressed.connect(open_wires_panel, CONNECT_APPEND_SOURCE_OBJECT)
+			new_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			add_child(new_button)
 
 

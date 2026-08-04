@@ -2,22 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bystuychx5vtl" path="res://assets/scripts/arcade.gd" id="1_q47is"]
 [ext_resource type="PackedScene" uid="uid://u2lte5ws17hj" path="res://assets/scenes/wires_panel.tscn" id="2_3nx4w"]
-[ext_resource type="Texture2D" uid="uid://dro5gfg6ec5rj" path="res://assets/sprites/arcade/MOCKCLOSET.png" id="2_8yvdn"]
+[ext_resource type="Texture2D" uid="uid://bu5n1wy7e0qht" path="res://assets/sprites/arcade/THEARCADE_panel_gone.png" id="2_td6fs"]
+[ext_resource type="Texture2D" uid="uid://dlqwmalta7ipw" path="res://assets/sprites/arcade/arcade_panel.png" id="3_1wimr"]
+[ext_resource type="Texture2D" uid="uid://brbflmnj2alhh" path="res://assets/sprites/arcade/screwdriver.png" id="4_1wimr"]
 [ext_resource type="Texture2D" uid="uid://cmld1f3casax" path="res://assets/sprites/shop_menu/goto_shop_sign.png" id="4_edfqx"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3nx4w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_8yvdn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edfqx"]
-bg_color = Color(1, 1, 1, 1)
+[ext_resource type="Texture2D" uid="uid://chuqmol7d65f2" path="res://assets/sprites/arcade/screw.png" id="4_td6fs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cix3"]
 atlas = ExtResource("4_edfqx")
@@ -30,73 +19,86 @@ region = Rect2(100, 0, 100, 50)
 [node name="Arcade" type="Node2D" unique_id=22590857]
 script = ExtResource("1_q47is")
 
-[node name="Background" type="AnimatedSprite2D" parent="." unique_id=307950519]
-sprite_frames = SubResource("SpriteFrames_3nx4w")
+[node name="Background" type="Sprite2D" parent="." unique_id=1275652910]
+texture = ExtResource("2_td6fs")
 offset = Vector2(240, 135)
 
-[node name="ScrewdriverButton" type="Button" parent="." unique_id=628339042]
-offset_left = 36.0
-offset_top = 45.0
-offset_right = 100.0
-offset_bottom = 76.0
-text = "Screw"
+[node name="Panel" type="Sprite2D" parent="." unique_id=652305826]
+unique_name_in_owner = true
+position = Vector2(240, 219)
+texture = ExtResource("3_1wimr")
+
+[node name="ScrewdriverButton" type="TextureButton" parent="." unique_id=1708956895]
+modulate = Color(0.640625, 0.640625, 0.640625, 1)
+offset_left = 41.0
+offset_top = 67.0
+offset_right = 117.0
+offset_bottom = 84.0
+texture_normal = ExtResource("4_1wimr")
 
 [node name="Screws" type="Control" parent="." unique_id=1572507418]
 unique_name_in_owner = true
+modulate = Color(0.746875, 0.746875, 0.746875, 1)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 196.0
-offset_top = 156.0
-offset_right = 286.0
-offset_bottom = 206.0
+offset_left = 200.0
+offset_top = 193.0
+offset_right = 280.0
+offset_bottom = 243.0
 
-[node name="Button" type="Button" parent="Screws" unique_id=152131775]
+[node name="Button" type="TextureButton" parent="Screws" unique_id=1889116824]
 layout_mode = 1
-offset_right = 8.0
-offset_bottom = 8.0
+offset_top = 2.0
+offset_right = 11.0
+offset_bottom = 13.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_td6fs")
 
-[node name="Button2" type="Button" parent="Screws" unique_id=1938735600]
+[node name="Button2" type="TextureButton" parent="Screws" unique_id=1268964759]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_top = 3.0
-offset_right = 8.0
-offset_bottom = 11.0
+offset_left = -13.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 12.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_td6fs")
 
-[node name="Button3" type="Button" parent="Screws" unique_id=1937916747]
+[node name="Button3" type="TextureButton" parent="Screws" unique_id=851934184]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
-offset_top = -5.0
-offset_right = 10.0
+offset_top = -8.0
+offset_right = 13.0
 offset_bottom = 3.0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_td6fs")
 
-[node name="Button4" type="Button" parent="Screws" unique_id=2005606606]
+[node name="Button4" type="TextureButton" parent="Screws" unique_id=336177118]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -3.0
-offset_right = -8.0
-offset_bottom = 5.0
+offset_left = -13.0
+offset_top = -8.0
+offset_right = -2.0
+offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_edfqx")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_td6fs")
 
 [node name="WiresPanel" parent="." unique_id=976445622 instance=ExtResource("2_3nx4w")]
 visible = false
