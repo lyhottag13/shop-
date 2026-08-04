@@ -17,6 +17,8 @@ const _SOUNDS: Dictionary[String, AudioStream] = {
 	DIALOGUE = preload("uid://ccpi3m1uvrff5"),
 	STATIC = preload("uid://bxuyin5j8xg6r"),
 	ELECTRIC_SPARKS = preload("uid://c435pm2buah0f"),
+	UNSCREWING_SQUEAK = preload("uid://b4ytykv74t0if"),
+	PANEL_FALLING = preload("uid://b7dxwe2cpx11g"),
 	
 }
 
@@ -89,6 +91,10 @@ func play_sfx(sfx_name: Constants.SFX):
 			sound_to_play = _SOUNDS.STATIC
 		Constants.SFX.SPARKS:
 			sound_to_play = _SOUNDS.ELECTRIC_SPARKS
+		Constants.SFX.UNSCREWING_SQUEAK:
+			sound_to_play = _SOUNDS.UNSCREWING_SQUEAK
+		Constants.SFX.PANEL_FALLING:
+			sound_to_play = _SOUNDS.PANEL_FALLING
 	
 	if sound_to_play == null:
 		print("No SFX to play! Insert it into the play_sfx() method.")

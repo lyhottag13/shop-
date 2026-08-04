@@ -34,6 +34,7 @@ offset_left = 41.0
 offset_top = 67.0
 offset_right = 117.0
 offset_bottom = 84.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_1wimr")
 
 [node name="Screws" type="Control" parent="." unique_id=1572507418]

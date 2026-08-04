@@ -42,6 +42,7 @@ func _on_screw_pressed(source: TextureButton) -> void:
 		source.pressed.disconnect(_on_screw_pressed)
 		const UNSCREW_TIME = 1
 		const DESIRED_SCALE = 1.4
+		SoundManager.play_sfx(Constants.SFX.UNSCREWING_SQUEAK)
 		create_tween().tween_property(source, "rotation_degrees", 720, UNSCREW_TIME)
 		await create_tween().tween_property(source, "scale", Vector2(DESIRED_SCALE, DESIRED_SCALE), UNSCREW_TIME).finished
 		
@@ -55,6 +56,7 @@ func _on_screw_pressed(source: TextureButton) -> void:
 		screws_collected += 1
 		
 		if screws_collected == MAX_SCREWS:
+			SoundManager.play_sfx(Constants.SFX.PANEL_FALLING)
 			create_tween().tween_property(panel, "position:y", 300, 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 			create_tween().tween_property(panel, "rotation_degrees", 180, 1)
 			var new_button := Button.new()
