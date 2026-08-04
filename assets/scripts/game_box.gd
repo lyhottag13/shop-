@@ -31,6 +31,7 @@ func set_link(p_link: String):
 
 func _on_mouse_entered() -> void:
 	label.add_theme_color_override("font_color", Color(0.969, 1.0, 0.0, 1.0))
+	SoundManager.play_sfx(Constants.SFX.GAME_HOVER)
 
 func _on_mouse_exited() -> void:
 	label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
