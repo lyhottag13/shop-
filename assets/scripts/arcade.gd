@@ -7,18 +7,35 @@ signal goto_shop
 
 const PANEL_SIZE = Vector2(80, 52)
 const MAX_SCREWS = 4
+const THEARCADE_PANEL_GONE_TURNED_ON = preload("uid://cgkftmouwuf7l")
 
 @onready var screwdriver_button: TextureButton = $ScrewdriverButton
 @onready var screws: Control = %Screws
 @onready var wires_panel: Control = $WiresPanel
 @onready var goto_shop_button: TextureButton = %GotoShopButton
 @onready var panel: Sprite2D = %Panel
+@onready var background: Sprite2D = $Background
+@onready var shader: ColorRect = %Shader
 
 var screws_collected := 0
 var is_screwdriver_collected := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if SaveData.is_arcade_fixed:
+		background.texture = THEARCADE_PANEL_GONE_TURNED_ON
+		shader.show()
+		screwdriver_button.hide()
+		screws.hide()
+		panel.hide()
+		var new_button = Button.new()
+		new_button.position = Vector2(190, 70)
+		new_button.size = Vector2(102, 63)
+		new_button.pressed.connect(goto_arcade_machine.emit)
+		new_button.flat = true
+		new_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		add_child(new_button)
+
 	SoundManager.play_background(Constants.BACKGROUNDS.ARCADE_AMBIENCE)
 	await Utils.sleep(1)
 	
@@ -74,6 +91,9 @@ func open_wires_panel(source: Button):
 
 
 func _on_wires_panel_wires_finished() -> void:
+	SaveData.is_arcade_fixed = true
+	shader.show()
+	background.texture = THEARCADE_PANEL_GONE_TURNED_ON
 	goto_arcade_machine.emit()
 
 

@@ -4,9 +4,34 @@
 [ext_resource type="PackedScene" uid="uid://u2lte5ws17hj" path="res://assets/scenes/wires_panel.tscn" id="2_3nx4w"]
 [ext_resource type="Texture2D" uid="uid://bu5n1wy7e0qht" path="res://assets/sprites/arcade/THEARCADE_panel_gone.png" id="2_td6fs"]
 [ext_resource type="Texture2D" uid="uid://dlqwmalta7ipw" path="res://assets/sprites/arcade/arcade_panel.png" id="3_1wimr"]
+[ext_resource type="Shader" uid="uid://cdq7v6y42a3ji" path="res://assets/shaders/arcade_machine.gdshader" id="3_6wifj"]
 [ext_resource type="Texture2D" uid="uid://brbflmnj2alhh" path="res://assets/sprites/arcade/screwdriver.png" id="4_1wimr"]
 [ext_resource type="Texture2D" uid="uid://cmld1f3casax" path="res://assets/sprites/shop_menu/goto_shop_sign.png" id="4_edfqx"]
 [ext_resource type="Texture2D" uid="uid://chuqmol7d65f2" path="res://assets/sprites/arcade/screw.png" id="4_td6fs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tox0r"]
+shader = ExtResource("3_6wifj")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.18800000893
+shader_parameter/scanlines_width = 0.05200000247
+shader_parameter/grille_opacity = 0.18400000874
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.10000000475
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cix3"]
 atlas = ExtResource("4_edfqx")
@@ -22,6 +47,15 @@ script = ExtResource("1_q47is")
 [node name="Background" type="Sprite2D" parent="." unique_id=1275652910]
 texture = ExtResource("2_td6fs")
 offset = Vector2(240, 135)
+
+[node name="Shader" type="ColorRect" parent="." unique_id=1624032417]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_tox0r")
+offset_left = 189.0
+offset_top = 69.0
+offset_right = 291.0
+offset_bottom = 131.0
 
 [node name="Panel" type="Sprite2D" parent="." unique_id=652305826]
 unique_name_in_owner = true

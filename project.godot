@@ -20,6 +20,7 @@ config/icon="uid://dm0rvipxe8r6m"
 Utils="*uid://b36xsxnctbrsu"
 SoundManager="*uid://m2vlbwk4amsn"
 CursorStopper="*uid://b1ru4vhisancd"
+SaveData="*uid://b4m4pli1gs5kd"
 
 [display]
 
