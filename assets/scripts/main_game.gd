@@ -23,8 +23,8 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(cursor_highlight, Input.CURSOR_POINTING_HAND)
 	
 	goto_scene(SHOP, false)
-	var game_scene = current_scene as Game
-	game_scene.goto_arcade.connect(_on_game_goto_arcade)
+	if current_scene is Shop:
+		current_scene.goto_arcade.connect(_on_game_goto_arcade)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
@@ -45,9 +45,9 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 	
 	if fade:
 		SoundManager.fade_background(1, 0)
-		transition.position = Vector2(650, 0)
+		transition.position.x = 650
 		create_tween().tween_property(world, "position:x", -SCENE_FADE_DISTANCE, FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS)
-		await create_tween().tween_property(transition, "position", Vector2(-75, 0), FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS).finished
+		await create_tween().tween_property(transition, "position:x", -75, FADE_TIME).set_ease(SCENE_EASE_START).set_trans(SCENE_TRANS).finished
 		
 	if current_scene:
 		current_scene.queue_free()
@@ -62,28 +62,28 @@ func goto_scene(new_scene: PackedScene, fade: bool = true):
 			SoundManager.fade_background(0, 1)
 		world.position.x = SCENE_FADE_DISTANCE
 		create_tween().tween_property(world, "position:x", 0, FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS)
-		await create_tween().tween_property(transition, "position", Vector2(-650, 0), FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS).finished
+		await create_tween().tween_property(transition, "position:x",-650, FADE_TIME).set_ease(SCENE_EASE_END).set_trans(SCENE_TRANS).finished
 	
 	CursorStopper.hide()
 
 
 func _on_game_goto_arcade() -> void:
 	await goto_scene(ARCADE)
-	var arcade_scene = current_scene as Arcade
-	arcade_scene.goto_arcade_machine.connect(_on_arcade_goto_arcade_machine)
-	arcade_scene.goto_shop.connect(_on_goto_shop)
+	if current_scene is Arcade:
+		current_scene.goto_arcade_machine.connect(_on_arcade_goto_arcade_machine)
+		current_scene.goto_shop.connect(_on_goto_shop)
 
 
 func _on_arcade_goto_arcade_machine() -> void:
 	await goto_scene(ARCADE_MACHINE)
-	var arcade_machine_scene = current_scene as ArcadeMachine
-	arcade_machine_scene.goto_arcade_pressed.connect(_on_game_goto_arcade)
+	if current_scene is ArcadeMachine:
+		current_scene.goto_arcade_pressed.connect(_on_game_goto_arcade)
 
 func _on_goto_shop() -> void:
 	await goto_scene(SHOP)
-	var shop_scene = current_scene as Game
-	shop_scene.handle_sequence("remove_sign")
-	shop_scene.goto_arcade.connect(_on_game_goto_arcade)
+	if current_scene is Shop:
+		current_scene.handle_sequence("remove_sign")
+		current_scene.goto_arcade.connect(_on_game_goto_arcade)
 
 
 func _fade_to_left_first_half() -> void:

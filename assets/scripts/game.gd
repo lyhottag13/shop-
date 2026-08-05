@@ -1,4 +1,4 @@
-class_name Game 
+class_name Shop 
 extends Node2D
 
 signal goto_arcade
@@ -7,10 +7,6 @@ signal goto_arcade
 @onready var dialogue_box: DialogueBox = %DialogueBox
 @onready var background: TextureRect = $Background
 @onready var ali: Ali = $Ali
-@onready var ali_animation_player: AnimationPlayer = %AliAnimationPlayer
-@onready var shop_fade_animation_player: AnimationPlayer = %ShopFadeAnimationPlayer
-@onready var shop_slide_animation_player: AnimationPlayer = %ShopSlideAnimationPlayer
-@onready var background_animation_player: AnimationPlayer = %BackgroundAnimationPlayer
 @onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var arcade_switcher_button: TextureButton = %ArcadeSwitcherButton
@@ -31,8 +27,8 @@ func handle_sequence(key: String):
 		"remove_sign":
 			if ali_shop_button.pressed.is_connected(_on_interactable_pressed):
 				ali_shop_button.pressed.disconnect(_on_interactable_pressed)
-			background_animation_player.play("fade_to_yellow")
-			ali_animation_player.play("light_up")
+			create_tween().tween_property(background, "modulate", Color.WHITE, 0.5)
+			create_tween().tween_property(ali, "modulate", Color.WHITE, 0.5)
 			ali.play_animation("removing_sign")
 			await Utils.sleep(1)
 			SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
@@ -87,25 +83,24 @@ func toggle_shop(enabled = null) -> void:
 	
 	is_shop_menu_open = enabled if enabled != null else not is_shop_menu_open
 	
-	if is_shop_menu_open:
-		shop_slide_animation_player.play("slide_in")
-		ali_animation_player.play("slide_ali")
-	else:
-		shop_slide_animation_player.play("slide_out")
-		ali_animation_player.play("unslide_ali")
+	const TWEEN_TIME = 0.7
+	var ali_final_pos = 104 if is_shop_menu_open else 240
+	var shop_final_pos = 480 if is_shop_menu_open else 761
+	var tween := create_tween()
+	tween.tween_property(shop_menu, "position:x", shop_final_pos, TWEEN_TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.parallel().tween_property(ali, "position:x", ali_final_pos, TWEEN_TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	
-	await shop_slide_animation_player.animation_finished
+	await tween.finished
 
 
 func disappear_shop() -> void:
-	shop_fade_animation_player.play("fade_shop")
+	create_tween().tween_property(shop_menu, "modulate", Color.TRANSPARENT, 0.5)
 	toggle_shop(false)
 	shop_menu.disable()
 
 
 func appear_shop() -> void:
-	shop_fade_animation_player.play_backwards("fade_shop")
-	await shop_fade_animation_player.animation_finished
+	await create_tween().tween_property(shop_menu, "modulate", Color.WHITE, 0.5).finished
 	shop_menu.enable()
 
 
