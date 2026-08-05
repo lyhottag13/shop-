@@ -7,9 +7,9 @@ signal goto_arcade
 @onready var dialogue_box: DialogueBox = %DialogueBox
 @onready var background: TextureRect = $Background
 @onready var ali: Ali = $Ali
-@onready var sign_animation_player: AnimationPlayer = %SignAnimationPlayer
 @onready var shop_menu: ShopMenu = %ShopMenu
 @onready var arcade_switcher_button: TextureButton = %ArcadeSwitcherButton
+@onready var closed_sign: Sprite2D = $ClosedSign
 
 var can_interact := true
 
@@ -151,7 +151,11 @@ func handle_cutscene(cutscene_type: CUTSCENE_TYPE, key: String):
 
 
 func _on_ali_sign_left_hand() -> void:
-	sign_animation_player.play("throw_sign")
+	await Utils.sleep(0.5)
+	var tween = create_tween()
+	tween.tween_property(closed_sign, "position:y", 302, 1.5)
+	tween.parallel().tween_property(closed_sign, "rotation_degrees", -1200, 1.5)
+	tween.parallel().tween_property(closed_sign, "position:x", 64, 1.5)
 
 
 func _on_button_pressed() -> void:
