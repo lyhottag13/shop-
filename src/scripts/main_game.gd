@@ -82,7 +82,9 @@ func _on_arcade_goto_arcade_machine() -> void:
 func _on_goto_shop() -> void:
 	await goto_scene(SHOP)
 	if current_scene is Shop:
-		current_scene.handle_sequence("remove_sign")
+		if not SaveData.is_emerged:
+			current_scene.handle_sequence("remove_sign")
+		
 		current_scene.goto_arcade.connect(_on_game_goto_arcade)
 
 

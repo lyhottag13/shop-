@@ -18,13 +18,33 @@ enum CUTSCENE_TYPE {
 	SEQUENCE
 }
 
+func _ready() -> void:
+	if SaveData.is_emerged:
+		setup_emerged()
+
 func _on_interactable_pressed(sequence_key: String) -> void:
 	handle_cutscene(CUTSCENE_TYPE.SEQUENCE, sequence_key)
+
+
+func setup_emerged() -> void:
+	if ali_shop_button.pressed.is_connected(_on_interactable_pressed):
+		ali_shop_button.pressed.disconnect(_on_interactable_pressed)
+	SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
+	SoundManager.fade_background(0, 1)
+	ali.play_animation("idle")
+	ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
+	appear_shop()
+	background.modulate = Color.WHITE
+	ali.modulate = Color.WHITE
+	const ENDING_POSITION = Vector2(357, 0)
+	create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
 
 func handle_sequence(key: String):
 	match key:
 		"remove_sign":
+			SaveData.is_emerged = true
+			
 			if ali_shop_button.pressed.is_connected(_on_interactable_pressed):
 				ali_shop_button.pressed.disconnect(_on_interactable_pressed)
 			create_tween().tween_property(background, "modulate", Color.WHITE, 0.5)
