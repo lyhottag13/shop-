@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://rjpjapc8643p"]
 
-[ext_resource type="Script" uid="uid://blho5uk6k7hai" path="res://assets/scripts/arcade_machine.gd" id="1_2xx2t"]
+[ext_resource type="Script" uid="uid://blho5uk6k7hai" path="res://src/scripts/arcade_machine.gd" id="1_2xx2t"]
 [ext_resource type="Texture2D" uid="uid://d34w1bvymd05g" path="res://assets/sprites/arcade/mock_arcade_zoomed.png" id="1_uojcj"]
-[ext_resource type="PackedScene" uid="uid://k8yiw0a6320p" path="res://assets/scenes/arcade_selector.tscn" id="2_ver6a"]
-[ext_resource type="Shader" uid="uid://cdq7v6y42a3ji" path="res://assets/shaders/arcade_machine.gdshader" id="2_yh62r"]
+[ext_resource type="PackedScene" uid="uid://k8yiw0a6320p" path="res://src/scenes/arcade_selector.tscn" id="2_ver6a"]
+[ext_resource type="Shader" uid="uid://cdq7v6y42a3ji" path="res://src/shaders/arcade_machine.gdshader" id="2_yh62r"]
 [ext_resource type="Texture2D" uid="uid://c542bekhwnlln" path="res://assets/sprites/shop_menu/goto_arcade_sign_from_machine.png" id="5_2xx2t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbaxx"]

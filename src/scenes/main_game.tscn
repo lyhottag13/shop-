@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1xnpv18n6g2a"]
 
-[ext_resource type="Script" uid="uid://cktb68oi8150c" path="res://assets/scripts/main_game.gd" id="1_tyt4a"]
-[ext_resource type="Script" uid="uid://bx0wxsuqf2cnp" path="res://assets/scripts/systems.gd" id="2_8ftvu"]
+[ext_resource type="Script" uid="uid://cktb68oi8150c" path="res://src/scripts/main_game.gd" id="1_lt075"]
+[ext_resource type="Script" uid="uid://bx0wxsuqf2cnp" path="res://src/scripts/systems.gd" id="2_r3nyt"]
 
 [sub_resource type="Gradient" id="Gradient_tyt4a"]
 offsets = PackedFloat32Array(0, 0.1403162, 0.8517786, 1)
@@ -11,7 +11,7 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_tyt4a")
 
 [node name="MainGame" type="Node" unique_id=1598721179]
-script = ExtResource("1_tyt4a")
+script = ExtResource("1_lt075")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1132828525]
 anchors_preset = 15
@@ -22,7 +22,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Systems" type="Node" parent="." unique_id=465136400]
-script = ExtResource("2_8ftvu")
+script = ExtResource("2_r3nyt")
 
 [node name="World" type="Node2D" parent="." unique_id=196865380]
 unique_name_in_owner = true

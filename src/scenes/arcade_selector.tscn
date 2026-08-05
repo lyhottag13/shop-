@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://k8yiw0a6320p"]
 
-[ext_resource type="Script" uid="uid://b4g4f25ib0xie" path="res://assets/scripts/arcade_selector.gd" id="1_2aob1"]
+[ext_resource type="Script" uid="uid://b4g4f25ib0xie" path="res://src/scripts/arcade_selector.gd" id="1_2aob1"]
 
 [node name="ArcadeSelector" type="Control" unique_id=72425342]
 layout_mode = 3

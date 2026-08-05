@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cc68mc682hq8x"]
 
-[ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://assets/scripts/dialogue_box.gd" id="1_wj3ed"]
+[ext_resource type="Script" uid="uid://ctmctt4x33jll" path="res://src/scripts/dialogue_box.gd" id="1_wj3ed"]
 [ext_resource type="Texture2D" uid="uid://bhv2eau8p20ww" path="res://assets/sprites/ali/Dialogue Ali.png" id="2_amlr8"]
 [ext_resource type="Texture2D" uid="uid://d0et01ap3mu6w" path="res://assets/sprites/ali/Dialogue Ali (Speaking).png" id="3_u1vlu"]
-[ext_resource type="PackedScene" uid="uid://q7c7r2ubg0t0" path="res://assets/scenes/star_and_label_container.tscn" id="4_u1vlu"]
+[ext_resource type="PackedScene" uid="uid://q7c7r2ubg0t0" path="res://src/scenes/star_and_label_container.tscn" id="4_u1vlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilnc5"]
 bg_color = Color(0, 0, 0, 1)

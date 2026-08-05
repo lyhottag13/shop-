@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5sgalvej038p"]
 
-[ext_resource type="Script" uid="uid://b48okv1q3nx7s" path="res://assets/scripts/wire_game.gd" id="1_5uhwf"]
-[ext_resource type="Texture2D" uid="uid://b1vnkoc5jy6bn" path="res://assets/sprites/arcade/arcade_wire_puzzle.png" id="2_7gi43"]
+[ext_resource type="Script" uid="uid://b48okv1q3nx7s" path="res://src/scripts/wire_game.gd" id="1_qeb0n"]
+[ext_resource type="Texture2D" uid="uid://b1vnkoc5jy6bn" path="res://assets/sprites/arcade/arcade_wire_puzzle.png" id="2_u8ac2"]
 
 [node name="WireGame" type="Control" unique_id=768055956]
 custom_minimum_size = Vector2(380, 170)
@@ -10,13 +10,13 @@ anchor_right = 0.79200006
 anchor_bottom = 0.63000005
 offset_right = -380.16003
 offset_bottom = -170.10002
-script = ExtResource("1_5uhwf")
+script = ExtResource("1_qeb0n")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=733883397]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_7gi43")
+texture = ExtResource("2_u8ac2")
 
 [node name="TileContainer" type="Control" parent="." unique_id=696050183]
 layout_mode = 1

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1omgjifhm7wc"]
 
-[ext_resource type="Script" uid="uid://bkw71x5l1wvw" path="res://assets/scripts/game_box.gd" id="1_6e73j"]
-[ext_resource type="Texture2D" uid="uid://creh0088lm2mg" path="res://assets/sprites/arcade/games/pickaxe_icon.png" id="1_ym1re"]
+[ext_resource type="Script" uid="uid://bkw71x5l1wvw" path="res://src/scripts/game_box.gd" id="1_xth61"]
+[ext_resource type="Texture2D" uid="uid://creh0088lm2mg" path="res://assets/sprites/arcade/games/pickaxe_icon.png" id="2_1vd7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u5n3"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,7 +17,7 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
-script = ExtResource("1_6e73j")
+script = ExtResource("1_xth61")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=611831472]
 custom_minimum_size = Vector2(32, 32)
@@ -31,7 +31,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4u5n3")
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer" unique_id=965325843]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_ym1re")
+texture = ExtResource("2_1vd7m")
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=238787693]
 unique_name_in_owner = true

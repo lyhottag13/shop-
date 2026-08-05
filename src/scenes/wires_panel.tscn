@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u2lte5ws17hj"]
 
-[ext_resource type="Script" uid="uid://bp1mqp3pb84lr" path="res://assets/scripts/wires_panel.gd" id="1_6jwgl"]
-[ext_resource type="PackedScene" uid="uid://c5sgalvej038p" path="res://assets/scenes/wire_game.tscn" id="1_vyxlh"]
+[ext_resource type="Script" uid="uid://bp1mqp3pb84lr" path="res://src/scripts/wires_panel.gd" id="1_6jwgl"]
+[ext_resource type="PackedScene" uid="uid://c5sgalvej038p" path="res://src/scenes/wire_game.tscn" id="1_vyxlh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfowd"]
 bg_color = Color(0, 0, 0, 1)

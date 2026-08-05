@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d36g6yvqkag6g"]
 
-[ext_resource type="Script" uid="uid://j4qg47oscx3m" path="res://assets/scripts/game.gd" id="1_cxlow"]
+[ext_resource type="Script" uid="uid://j4qg47oscx3m" path="res://src/scripts/shop.gd" id="1_cxlow"]
 [ext_resource type="Texture2D" uid="uid://cbbt77fe68ema" path="res://assets/sprites/background/Background.webp" id="2_kam1a"]
-[ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://assets/scenes/ali.tscn" id="3_2uom1"]
-[ext_resource type="PackedScene" uid="uid://cc68mc682hq8x" path="res://assets/scenes/dialogue_box.tscn" id="4_6p2lh"]
+[ext_resource type="PackedScene" uid="uid://cpn0cyjdhnbk" path="res://src/scenes/ali.tscn" id="3_2uom1"]
+[ext_resource type="PackedScene" uid="uid://cc68mc682hq8x" path="res://src/scenes/dialogue_box.tscn" id="4_6p2lh"]
 [ext_resource type="Texture2D" uid="uid://db1eacf7dqeht" path="res://assets/sprites/shop_menu/arcade_sign.png" id="5_b4a4x"]
-[ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://assets/scenes/shop_menu.tscn" id="6_d6ybq"]
+[ext_resource type="PackedScene" uid="uid://cvt017ccyv0gu" path="res://src/scenes/shop_menu.tscn" id="6_d6ybq"]
 [ext_resource type="Texture2D" uid="uid://de7enbwrjau6p" path="res://assets/sprites/ali/Closed Sign.png" id="7_nxakl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfsp4"]
