@@ -52,7 +52,7 @@ func handle_sequence(key: String):
 			await Utils.sleep(1)
 			SoundManager.play_background(Constants.BACKGROUNDS.SHOP)
 			SoundManager.fade_background(0, 1)
-			start_howdy_text()
+			create_tween().tween_callback(dialogue_box.show_text.bind({text = "Howdy!\nI'm Ali.", face = "happy"})).set_delay(1)
 			await ali.play_animation("emerging")
 			appear_shop()
 			ali.play_animation("idle")
@@ -73,11 +73,6 @@ func handle_sequence(key: String):
 			background.modulate = Color(1.0, 1.0, 1.0, 1.0)
 			ali.play_animation("idle")
 			appear_shop()
-
-
-func start_howdy_text() -> void:
-	await Utils.sleep(1)
-	await dialogue_box.show_text({text = "Howdy!\nI'm Ali.", face = "happy"})
 
 
 func _on_shop_menu_toggle_shop() -> void:
