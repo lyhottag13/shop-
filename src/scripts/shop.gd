@@ -36,8 +36,7 @@ func setup_emerged() -> void:
 	appear_shop()
 	background.modulate = Color.WHITE
 	ali.modulate = Color.WHITE
-	const ENDING_POSITION = Vector2(357, 0)
-	create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	_show_sign()
 
 
 func handle_sequence(key: String):
@@ -58,9 +57,7 @@ func handle_sequence(key: String):
 			appear_shop()
 			ali.play_animation("idle")
 			ali_shop_button.pressed.connect(_on_interactable_pressed.bind("banter"))
-	
-			const ENDING_POSITION = Vector2(357, 0)
-			create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+			_show_sign()
 		"banter":
 			var random_index = randi_range(0, 2)
 			var dialogue: Array = Dialogue.dialogue["banter" + str(random_index)] as Array[Dictionary]
@@ -180,3 +177,8 @@ func _on_ali_sign_left_hand() -> void:
 
 func _on_button_pressed() -> void:
 	goto_arcade.emit()
+
+
+func _show_sign() -> void:
+	const ENDING_POSITION = Vector2(357, 0)
+	create_tween().tween_property(arcade_switcher_button, "position", ENDING_POSITION, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)

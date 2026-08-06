@@ -119,7 +119,7 @@ static var item_data : Dictionary[String, Dictionary] = {
 		description = "",
 		image = DST,
 		dialogue = [
-			{ face = "happy", text = "Make sure not to slobber over everything you little rascal!" }
+			{ face = "happy", text = "He'll keep your items safe...\n...at the cost of slobbering them!" }
 		]
 	},
 
